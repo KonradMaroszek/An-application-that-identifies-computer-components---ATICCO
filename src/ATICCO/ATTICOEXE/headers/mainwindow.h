@@ -4,19 +4,19 @@
 #include <QMainWindow>
 
 namespace Ui {
-class MainWindow;
+class AticcoMainWIndow;
 }
 
-class MainWindow : public QMainWindow
+class AticcoMainWIndow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit AticcoMainWIndow(QWidget *parent = 0);
+    ~AticcoMainWIndow();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::AticcoMainWIndow *ui;
 };
 
 #endif // MAINWINDOW_H

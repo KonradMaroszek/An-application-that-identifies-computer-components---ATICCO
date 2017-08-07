@@ -1,14 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::AticcoMainWIndow)
 {
     ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
+AticcoMainWIndow::~AticcoMainWIndow()
 {
     delete ui;
 }

@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/graphics/png">
+        <file>graphics/png/tools.png</file>
+        <file>graphics/png/RAM.png</file>
+        <file>graphics/png/components.png</file>
+        <file>graphics/png/hardDisk.png</file>
+        <file>graphics/png/motherboard.png</file>
+        <file>graphics/png/processor.png</file>
+    </qresource>
+    <qresource prefix="/graphics/ico">
+        <file>graphics/ico/tools.ico</file>
+        <file>graphics/ico/RAM.ico</file>
+        <file>graphics/ico/components.ico</file>
+        <file>graphics/ico/hardDisk.ico</file>
+        <file>graphics/ico/motherboard.ico</file>
+        <file>graphics/ico/processor.ico</file>
+    </qresource>
+</RCC>

@@ -14,12 +14,12 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 #Adding UAC manifest
-CONFIG(debug, debug|release) {
-    message("UAC manifest will not add to exe file")
-} else {
-    QMAKE_LFLAGS += "/MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\""
-    message("UAC manifest will add to exe file")
-}
+#CONFIG(debug, debug|release) {
+#    message("UAC manifest will not add to exe file")
+#} else {
+#    QMAKE_LFLAGS += "/MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\""
+#    message("UAC manifest will add to exe file")
+#}
 
 INCLUDEPATH += \
         src\
@@ -31,10 +31,19 @@ RC_FILE += resources\Aticco.rc
 
 SOURCES += \
         src\main.cpp \
-        src\mainwindow.cpp
+        src\mainwindow.cpp \
+    release/moc_mainwindow.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp
 
 HEADERS += \
-        headers\mainwindow.h
+        headers\mainwindow.h \
+    headers/mainwindow.h \
+    release/moc_predefs.h \
+    ui_mainwindow.h
 
 FORMS += \
         uiFiles\mainwindow.ui
+
+RESOURCES += \
+    resources/resources.qrc
