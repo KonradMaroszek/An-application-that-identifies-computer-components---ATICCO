@@ -1,4 +1,10 @@
 #Qt files
 *.user
+Makefile*
+*.stash
+*ui_*.h
 #VS Files
 *.vs
+#Dirs
+release/
+debug/
