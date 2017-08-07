@@ -1,2 +1,4 @@
 #Qt files
 *.user
+#VS Files
+*.vs
