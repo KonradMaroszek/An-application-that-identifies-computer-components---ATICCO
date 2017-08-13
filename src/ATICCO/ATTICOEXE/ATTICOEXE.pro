@@ -32,18 +32,18 @@ RC_FILE += resources\Aticco.rc
 SOURCES += \
         src\main.cpp \
         src\mainwindow.cpp \
-    release/moc_mainwindow.cpp \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/views/ResourceConsumptionWidget.cpp
 
 HEADERS += \
         headers\mainwindow.h \
     headers/mainwindow.h \
-    release/moc_predefs.h \
-    ui_mainwindow.h
+    headers/views/ResourceConsumptionWidget.h
 
 FORMS += \
-        uiFiles\mainwindow.ui
+        uiFiles\mainwindow.ui \
+    uiFiles/ResourceConsumptionWidget.ui
 
 RESOURCES += \
     resources/resources.qrc

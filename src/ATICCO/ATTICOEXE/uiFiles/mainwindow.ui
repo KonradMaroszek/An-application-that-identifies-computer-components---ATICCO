@@ -6,15 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>881</width>
-    <height>628</height>
+    <width>1280</width>
+    <height>720</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="sizePolicy">
@@ -36,7 +42,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>4</number>
       </property>
       <property name="iconSize">
        <size>
@@ -62,7 +68,7 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="mainTab">
        <property name="focusPolicy">
         <enum>Qt::ClickFocus</enum>
        </property>
@@ -73,6 +79,84 @@
        <attribute name="title">
         <string/>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="mainTabVerticalLayout" stretch="485,30,485">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="topHorizontalLayout">
+            <item>
+             <widget class="QWidget" name="CPUResourceConsumptionWIdget" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_13"/>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="RAMResourceConsumptionWIdget" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_12"/>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="middleHorizontalLayout" stretch="997,1003">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="bottomHorizontalLayout">
+            <item>
+             <widget class="QWidget" name="DiskResourceConsumptionWIdget" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_10"/>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="NetworkResourceConsumptionWIdget" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_11"/>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="icon">
@@ -110,6 +194,15 @@
         <string/>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="icon">
+        <iconset resource="../resources/resources.qrc">
+         <normaloff>:/graphics/png/graphics/png/network.png</normaloff>:/graphics/png/graphics/png/network.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string/>
+       </attribute>
+      </widget>
       <widget class="QWidget" name="tab_6">
        <attribute name="icon">
         <iconset resource="../resources/resources.qrc">
@@ -128,7 +221,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>881</width>
+     <width>1280</width>
      <height>21</height>
     </rect>
    </property>

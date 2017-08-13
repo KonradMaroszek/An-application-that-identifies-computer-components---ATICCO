@@ -6,6 +6,7 @@
         <file>graphics/png/hardDisk.png</file>
         <file>graphics/png/motherboard.png</file>
         <file>graphics/png/processor.png</file>
+        <file>graphics/png/network.png</file>
     </qresource>
     <qresource prefix="/graphics/ico">
         <file>graphics/ico/tools.ico</file>
@@ -14,5 +15,6 @@
         <file>graphics/ico/hardDisk.ico</file>
         <file>graphics/ico/motherboard.ico</file>
         <file>graphics/ico/processor.ico</file>
+        <file>graphics/ico/network.ico</file>
     </qresource>
 </RCC>
