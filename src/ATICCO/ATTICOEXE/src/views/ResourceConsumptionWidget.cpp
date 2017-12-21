@@ -3,19 +3,11 @@
 
 ResourceConsumptionWidget::ResourceConsumptionWidget(QWidget *parent) :
     QWidget(parent),
-    currentResourceConsumption(0),
-    averageResourceConsumption(0),
-    averageResourceConsumptionSinceRestart(0),
     ui(new Ui::ResourceConsumptionWidget)
 {
     ui->setupUi(this);
 
-    timer.start(1000);
-    timeSinceRestart.start();
-    timeSinceStart.start();
-
-    connect(&timer, SIGNAL(timeout()), this, SLOT(refreshTime()));
-    connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetRestartClock()));
+    connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetButtonClicked()));
 }
 
 ResourceConsumptionWidget::~ResourceConsumptionWidget()
@@ -28,63 +20,35 @@ void ResourceConsumptionWidget::setTitle(QString &title)
     ui->titleLabel->setText(title);
 }
 
-void ResourceConsumptionWidget::setCurrentResourceConsumption(int value)
+void ResourceConsumptionWidget::setCurrentResourceConsumption(const int value)
 {
-    if (value > 100 || value < 0)
-    {
-        //throw invalidTimecocooc;
-    }
-
-    currentResourceConsumption = value;
+    ui->progressBar->setValue(value);
+    ui->resourceConsumptionLabel->setText(QString::number(value) + "%");
 }
 
-void ResourceConsumptionWidget::setAvarageResourceConsumption(int value)
+void ResourceConsumptionWidget::setAvarageResourceConsumption(const int value)
 {
-    if (value > 100 || value < 0)
-    {
-        //throw invalidTimecocooc;
-    }
-
-    averageResourceConsumption = value;
+    ui->avarageResourceConsumptionLabel->setText(QString::number(value) + "%");
 }
 
-void ResourceConsumptionWidget::setAvarageResourceConsumptionSinceRestart(int value)
+void ResourceConsumptionWidget::setAvarageResourceConsumptionSinceRestart(const int value)
 {
-    if (value > 100 || value < 0)
-    {
-        //throw invalidTimecocooc;
-    }
-
-    averageResourceConsumptionSinceRestart = value;
+    ui->avarageResourceConsumptionFromRestartLabel->setText(QString::number(value) + "%");
 }
 
-void ResourceConsumptionWidget::resetRestartClock()
-{
-    timeSinceRestart.restart();
-}
-
-void ResourceConsumptionWidget::refreshTime()
-{
-    setTime(timeSinceStart.elapsed());
-    setRestartTime(timeSinceRestart.elapsed());
-}
-
-void ResourceConsumptionWidget::setTextValues()
-{
-    ui->avarageResourceConsumptionFromRestartLabel->setText(QString::number(averageResourceConsumptionSinceRestart) + "%");
-    ui->avarageResourceConsumptionLabel->setText(QString::number(averageResourceConsumption) + "%");
-    ui->progressBar->setValue(currentResourceConsumption);
-    ui->resourceConsumptionLabel->setText(QString::number(currentResourceConsumption) + "%");
-}
-
-void ResourceConsumptionWidget::setRestartTime(int milisecondsSinceRestart)
+void ResourceConsumptionWidget::setTimeSinceRestart(const int milisecondsSinceRestart)
 {
     QTime timeToDisplay = QTime::fromMSecsSinceStartOfDay(milisecondsSinceRestart);
     ui->timeOfMeasurmentFromRestartLabel->setText(timeToDisplay.toString());
 }
 
-void ResourceConsumptionWidget::setTime(int milisecondsSinceStart)
+void ResourceConsumptionWidget::setTimeSinceStart(const int milisecondsSinceStart)
 {
     QTime timeToDisplay = QTime::fromMSecsSinceStartOfDay(milisecondsSinceStart);
     ui->timeOfMeasurmentLabel->setText(timeToDisplay.toString());
+}
+
+void ResourceConsumptionWidget::resetButtonClicked()
+{
+    emit resetClicked();
 }

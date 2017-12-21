@@ -20,16 +20,14 @@ public:
 
 public slots:
     void setTitle(QString & title);
-    void setCurrentResourceConsumption(int value);
-    void setAvarageResourceConsumption(int value);
-    void setAvarageResourceConsumptionSinceRestart(int value);
+    void setCurrentResourceConsumption(const int value);
+    void setAvarageResourceConsumption(const int value);
+    void setAvarageResourceConsumptionSinceRestart(const int value);
+    void setTimeSinceRestart(const int milisecondsSinceRestart);
+    void setTimeSinceStart(const int milisecondsSinceStart);
 
 private slots:
-    void resetRestartClock();
-    void refreshTime();
-    void setTextValues();
-    void setRestartTime(int milisecondsSinceRestart);
-    void setTime(int milisecondsSinceStart);
+    void resetButtonClicked();
 
 signals:
     void resetClicked();
@@ -37,13 +35,6 @@ signals:
 
 private:
     Ui::ResourceConsumptionWidget *ui;
-    QTimer timer;
-    QTime timeSinceStart;
-    QTime timeSinceRestart;
-
-    int currentResourceConsumption;
-    int averageResourceConsumption;
-    int averageResourceConsumptionSinceRestart;
 };
 
 #endif // RESOURCECONSUMPTIONWIDGET_H
