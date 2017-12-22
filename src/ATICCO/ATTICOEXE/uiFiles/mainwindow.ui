@@ -42,7 +42,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -166,8 +166,9 @@
        <attribute name="title">
         <string/>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3"/>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="cpuTab">
        <attribute name="icon">
         <iconset resource="../resources/resources.qrc">
          <normaloff>:/graphics/png/graphics/png/processor.png</normaloff>:/graphics/png/graphics/png/processor.png</iconset>
@@ -175,6 +176,15 @@
        <attribute name="title">
         <string/>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QWidget" name="widget" native="true"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="icon">

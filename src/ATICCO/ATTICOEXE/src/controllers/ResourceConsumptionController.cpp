@@ -1,7 +1,6 @@
 #include "controllers/ResourceConsumptionController.h"
 
-ResourceConsumptionController::ResourceConsumptionController(ResourceConsumptionWidget *resourceConsumptionWidget
-                                                             )
+ResourceConsumptionController::ResourceConsumptionController(ResourceConsumptionWidget *resourceConsumptionWidget)
     : resourceConsumptionWidget(resourceConsumptionWidget)
 {
     timer.start(1000);

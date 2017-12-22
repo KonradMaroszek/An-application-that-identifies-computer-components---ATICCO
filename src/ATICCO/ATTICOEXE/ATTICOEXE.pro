@@ -47,7 +47,8 @@ HEADERS += \
 
 FORMS += \
     uiFiles\mainwindow.ui \
-    uiFiles/ResourceConsumptionWidget.ui
+    uiFiles/ResourceConsumptionWidget.ui \
+    uiFiles/mainComponentViewTemplate.ui
 
 RESOURCES += \
     resources/resources.qrc
