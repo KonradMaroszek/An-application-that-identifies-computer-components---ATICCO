@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>MainComponentViewTemplate</class>
+ <widget class="QWidget" name="MainComponentViewTemplate">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,7 +19,9 @@
      <item>
       <layout class="QHBoxLayout" name="componentTopHorizontalLayout">
        <item>
-        <widget class="QWidget" name="leftTopWidget" native="true"/>
+        <widget class="QWidget" name="leftTopWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_3"/>
+        </widget>
        </item>
        <item>
         <widget class="Line" name="line_5">

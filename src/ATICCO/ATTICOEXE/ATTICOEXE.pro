@@ -30,25 +30,24 @@ INCLUDEPATH += \
 RC_FILE += resources\Aticco.rc
 
 SOURCES += \
-    src\main.cpp \
-    src\mainwindow.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/views/ResourceConsumptionWidget.cpp \
     src/controllers/ResourceConsumptionController.cpp \
-    src/CpuInformationCollector.cpp
+    src/CpuInformationCollector.cpp \
+    src/views/MainComponentViewTemplate.cpp
 
 HEADERS += \
-    headers\mainwindow.h \
     headers/mainwindow.h \
     headers/views/ResourceConsumptionWidget.h \
     headers/controllers/ResourceConsumptionController.h \
-    headers/CpuInformationCollector.h
+    headers/CpuInformationCollector.h \
+    headers/views/MainComponentViewTemplate.h
 
 FORMS += \
     uiFiles\mainwindow.ui \
     uiFiles/ResourceConsumptionWidget.ui \
-    uiFiles/mainComponentViewTemplate.ui
+    uiFiles/MainComponentViewTemplate.ui
 
 RESOURCES += \
     resources/resources.qrc

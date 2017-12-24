@@ -42,7 +42,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>5</number>
       </property>
       <property name="iconSize">
        <size>
@@ -168,11 +168,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <layout class="QVBoxLayout" name="hardwareMainVerticalLayout">
-          <item>
-           <widget class="QWidget" name="hardwareMainWidget" native="true"/>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="hardwareMainVerticalLayout"/>
         </item>
        </layout>
       </widget>
@@ -186,11 +182,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <layout class="QVBoxLayout" name="cpuMainVerticalLayout">
-          <item>
-           <widget class="QWidget" name="cpuMainWidget" native="true"/>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="cpuMainVerticalLayout"/>
         </item>
        </layout>
       </widget>
@@ -204,11 +196,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <layout class="QVBoxLayout" name="ramMainVerticalLayout">
-          <item>
-           <widget class="QWidget" name="ramMainWidget" native="true"/>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="ramMainVerticalLayout"/>
         </item>
        </layout>
       </widget>
@@ -222,11 +210,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
-         <layout class="QVBoxLayout" name="diskMainVerticalLayout">
-          <item>
-           <widget class="QWidget" name="diskMainWidget" native="true"/>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="diskMainVerticalLayout"/>
         </item>
        </layout>
       </widget>
@@ -240,11 +224,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
-         <layout class="QVBoxLayout" name="networkMainVerticalLayout">
-          <item>
-           <widget class="QWidget" name="networkMainWidget" native="true"/>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="networkMainVerticalLayout"/>
         </item>
        </layout>
       </widget>
@@ -258,11 +238,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
-         <layout class="QVBoxLayout" name="usbMainVerticalLayout">
-          <item>
-           <widget class="QWidget" name="usbWidget" native="true"/>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="usbMainVerticalLayout"/>
         </item>
        </layout>
       </widget>
