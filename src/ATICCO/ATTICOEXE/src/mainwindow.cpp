@@ -50,6 +50,8 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ui->diskMainVerticalLayout->addWidget(disk);
 
     ResourceConsumptionController* resourceConsumptionCpuController = new ResourceConsumptionController(cpuWidgets);
+    connect(resourceConsumptionCpuController, SIGNAL(currentResourceConsumptionChanged(int)), cpuMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+
     ResourceConsumptionController* resourceConsumptionRamController1 = new ResourceConsumptionController(ramWidgets);
     ResourceConsumptionController* resourceConsumptionDiskController2 = new ResourceConsumptionController(diskWidgets);
     ResourceConsumptionController* resourceConsumptionNetworkController3 = new ResourceConsumptionController(networkWidgets);

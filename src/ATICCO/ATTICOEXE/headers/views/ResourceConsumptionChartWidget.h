@@ -2,9 +2,7 @@
 #define RESOURECONSUMPTIONCHARTWIDGET_H
 
 #include <QWidget>
-#include <QTimer>
-#include <QTime>
-#include <QLabel>
+#include <QtCharts>
 
 namespace Ui {
 class ResourceConsumptionChartWidget;
@@ -19,6 +17,7 @@ public:
     ~ResourceConsumptionChartWidget();
 
 public slots:
+    void newResourceConsumptionValue(int value);
 
 private slots:
 
@@ -26,6 +25,8 @@ signals:
 
 private:
     Ui::ResourceConsumptionChartWidget *ui;
+
+    QLineSeries* series;
 };
 
 #endif // RESOURECONSUMPTIONCHARTWIDGET_H
