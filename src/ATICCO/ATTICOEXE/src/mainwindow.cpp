@@ -41,6 +41,9 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     cpu->setResourceConsumptionWidget(cpuMainConsumptionWidget);
     cpuWidgets.append(cpuMainConsumptionWidget);
 
+    ResourceConsumptionChartWidget* cpuMainConsumptionChartWidget = new ResourceConsumptionChartWidget();
+    cpu->setResourceConsumptionChartWidget(cpuMainConsumptionChartWidget);
+
     ui->cpuMainVerticalLayout->addWidget(cpu);
     ui->ramMainVerticalLayout->addWidget(ram);
     ui->networkMainVerticalLayout->addWidget(network);

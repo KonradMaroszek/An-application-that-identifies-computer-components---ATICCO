@@ -340,7 +340,9 @@
      <item>
       <layout class="QHBoxLayout" name="componentBottomHorizontalLayout">
        <item>
-        <widget class="QWidget" name="bottomWidget" native="true"/>
+        <widget class="QWidget" name="bottomWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_4"/>
+        </widget>
        </item>
       </layout>
      </item>

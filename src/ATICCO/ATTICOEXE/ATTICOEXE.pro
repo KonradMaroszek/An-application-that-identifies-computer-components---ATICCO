@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,19 +35,22 @@ SOURCES += \
     src/views/ResourceConsumptionWidget.cpp \
     src/controllers/ResourceConsumptionController.cpp \
     src/CpuInformationCollector.cpp \
-    src/views/MainComponentViewTemplate.cpp
+    src/views/MainComponentViewTemplate.cpp \
+    src/views/ResourceConsumptionChartWidget.cpp
 
 HEADERS += \
     headers/mainwindow.h \
     headers/views/ResourceConsumptionWidget.h \
     headers/controllers/ResourceConsumptionController.h \
     headers/CpuInformationCollector.h \
-    headers/views/MainComponentViewTemplate.h
+    headers/views/MainComponentViewTemplate.h \
+    headers/views/ResourceConsumptionChartWidget.h
 
 FORMS += \
     uiFiles\mainwindow.ui \
     uiFiles/ResourceConsumptionWidget.ui \
-    uiFiles/MainComponentViewTemplate.ui
+    uiFiles/MainComponentViewTemplate.ui \
+    uiFiles/ResourceConsumptionChartWidget.ui
 
 RESOURCES += \
     resources/resources.qrc

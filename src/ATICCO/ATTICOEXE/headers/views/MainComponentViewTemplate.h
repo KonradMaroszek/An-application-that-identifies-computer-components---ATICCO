@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "views/ResourceConsumptionWidget.h"
+#include "views/ResourceConsumptionChartWidget.h"
 
 namespace Ui {
 class MainComponentViewTemplate;
@@ -17,6 +18,7 @@ public:
     ~MainComponentViewTemplate();
 
     void setResourceConsumptionWidget(ResourceConsumptionWidget *value);
+    void setResourceConsumptionChartWidget(ResourceConsumptionChartWidget *value);
 
 public slots:
 
@@ -30,6 +32,7 @@ signals:
 private:
     Ui::MainComponentViewTemplate *ui;
     ResourceConsumptionWidget* resourceConsumptionWidget;
+    ResourceConsumptionChartWidget* resourceConsumptionChartWidget;
 };
 
 #endif // MAINCOMPONENTVIEWTEMPLATE_H
