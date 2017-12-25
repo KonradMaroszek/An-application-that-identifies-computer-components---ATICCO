@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "views/ResourceConsumptionWidget.h"
-#include "views/MainComponentViewTemplate.h"
+#include "views/CpuMainView.h"
 #include "controllers/ResourceConsumptionController.h"
 
 #include <QThread>
@@ -32,10 +32,20 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionWidget* d = new ResourceConsumptionWidget();
     ui->NetworkResourceConsumptionWIdget->layout()->addWidget(d);
 
-    MainComponentViewTemplate* network = new MainComponentViewTemplate();
-    MainComponentViewTemplate* disk = new MainComponentViewTemplate();
-    MainComponentViewTemplate* cpu = new MainComponentViewTemplate();
-    MainComponentViewTemplate* ram = new MainComponentViewTemplate();
+//    MainComponentViewTemplate* network = new MainComponentViewTemplate();
+//    MainComponentViewTemplate* disk = new MainComponentViewTemplate();
+    CpuMainView* cpu = new CpuMainView();
+    cpu->setName("Intel(R) Core(TM) i7-3517U CPU @ 1.90GHz");
+    cpu->setMaxClockSpeed("2401");
+    cpu->setCurrentClockSpeed("1900");
+    cpu->setNumberOfCores("4");
+    cpu->setManufactuer("GenuineIntel");
+    cpu->setAddressWidth("64");
+    cpu->setDataWidth("64");
+    cpu->setCurrentVoltage("8");
+    cpu->setId("BFEBFBFF000306A9");
+
+//    MainComponentViewTemplate* ram = new MainComponentViewTemplate();
 
     ResourceConsumptionWidget* cpuMainConsumptionWidget = new ResourceConsumptionWidget();
     cpu->setResourceConsumptionWidget(cpuMainConsumptionWidget);
@@ -44,10 +54,10 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionChartWidget* cpuMainConsumptionChartWidget = new ResourceConsumptionChartWidget();
     cpu->setResourceConsumptionChartWidget(cpuMainConsumptionChartWidget);
 
-    ui->cpuMainVerticalLayout->addWidget(cpu);
-    ui->ramMainVerticalLayout->addWidget(ram);
-    ui->networkMainVerticalLayout->addWidget(network);
-    ui->diskMainVerticalLayout->addWidget(disk);
+    ui->cpuMainVerticalLayout->addWidget((QWidget*)cpu);
+//    ui->ramMainVerticalLayout->addWidget(ram);
+//    ui->networkMainVerticalLayout->addWidget(network);
+//    ui->diskMainVerticalLayout->addWidget(disk);
 
     ResourceConsumptionController* resourceConsumptionCpuController = new ResourceConsumptionController(cpuWidgets);
     connect(resourceConsumptionCpuController, SIGNAL(currentResourceConsumptionChanged(int)), cpuMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));

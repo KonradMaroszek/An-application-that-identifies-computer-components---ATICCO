@@ -36,7 +36,8 @@ SOURCES += \
     src/controllers/ResourceConsumptionController.cpp \
     src/CpuInformationCollector.cpp \
     src/views/MainComponentViewTemplate.cpp \
-    src/views/ResourceConsumptionChartWidget.cpp
+    src/views/ResourceConsumptionChartWidget.cpp \
+    src/views/CpuMainView.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -44,7 +45,8 @@ HEADERS += \
     headers/controllers/ResourceConsumptionController.h \
     headers/CpuInformationCollector.h \
     headers/views/MainComponentViewTemplate.h \
-    headers/views/ResourceConsumptionChartWidget.h
+    headers/views/ResourceConsumptionChartWidget.h \
+    headers/views/CpuMainView.h
 
 FORMS += \
     uiFiles\mainwindow.ui \

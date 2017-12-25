@@ -14,13 +14,53 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <layout class="QVBoxLayout" name="componentMainVerticalLayout" stretch="485,30,485">
+    <layout class="QVBoxLayout" name="componentMainVerticalLayout" stretch="50,0,50">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <item>
-      <layout class="QHBoxLayout" name="componentTopHorizontalLayout">
+      <layout class="QHBoxLayout" name="componentTopHorizontalLayout" stretch="50,0,50">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
        <item>
         <widget class="QWidget" name="leftTopWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_3"/>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+         </layout>
         </widget>
        </item>
        <item>
@@ -32,14 +72,45 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="componentTopRightHorizontalLayout" stretch="0">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <layout class="QVBoxLayout" name="componentDescriptionVerticalLayout" stretch="20,0,100">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <property name="leftMargin">
+            <number>9</number>
+           </property>
+           <property name="topMargin">
+            <number>9</number>
+           </property>
+           <property name="rightMargin">
+            <number>9</number>
+           </property>
+           <property name="bottomMargin">
+            <number>9</number>
+           </property>
            <item>
-            <layout class="QHBoxLayout" name="componentTitleHorizontalLayout" stretch="0,0">
+            <layout class="QHBoxLayout" name="componentTitleHorizontalLayout" stretch="50,50">
              <item>
               <widget class="QLabel" name="titleLabelLeft">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>TextLabel</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -47,6 +118,12 @@
               <widget class="QLabel" name="titleLabelRight">
                <property name="text">
                 <string>TextLabel</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -60,15 +137,34 @@
             </widget>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="componentDescriptionInternalHorizontalLayout">
+            <layout class="QHBoxLayout" name="componentDescriptionInternalHorizontalLayout" stretch="50,0,50">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item>
               <layout class="QVBoxLayout" name="componentDescriptionInternalVerticalLayout">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
-                <layout class="QHBoxLayout" name="firstLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="firstLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="firstLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -84,6 +180,12 @@
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -96,11 +198,24 @@
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="secondLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="secondLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="secondLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -116,6 +231,12 @@
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -128,11 +249,24 @@
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="thirdLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="thirdLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="thirdLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -148,6 +282,12 @@
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -160,11 +300,24 @@
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="fourthLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="fourthLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="fourthLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -179,6 +332,12 @@
                   <widget class="QLabel" name="fourthRightLabel">
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -195,12 +354,28 @@
              </item>
              <item>
               <layout class="QVBoxLayout" name="componentDescriptionInternalVerticalLayout_2">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
-                <layout class="QHBoxLayout" name="fifthLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="fifthLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="fifthLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -216,6 +391,12 @@
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -228,11 +409,24 @@
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="sixthLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="sixthLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="sixthLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -248,6 +442,12 @@
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -260,11 +460,24 @@
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="seventhLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="seventhLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="seventhLeftLayout">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -280,6 +493,12 @@
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -292,11 +511,24 @@
                 </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="eighthLabelHorizontalLayout">
+                <layout class="QHBoxLayout" name="eighthLabelHorizontalLayout" stretch="50,0,50">
                  <item>
                   <widget class="QLabel" name="eighthLeftLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -311,6 +543,12 @@
                   <widget class="QLabel" name="eighthRightLabel">
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -328,6 +566,9 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="componentMiddleHorizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="Line" name="line_7">
          <property name="orientation">
@@ -339,9 +580,28 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="componentBottomHorizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QWidget" name="bottomWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_4"/>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+         </layout>
         </widget>
        </item>
       </layout>
