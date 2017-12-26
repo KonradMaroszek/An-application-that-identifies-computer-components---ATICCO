@@ -9,7 +9,7 @@ class DiskMainView : protected MainComponentViewTemplate
 
 public:
     explicit DiskMainView(QWidget *parent = 0);
-    ~DiskMainView();
+    virtual ~DiskMainView();
 
     void setResourceConsumptionWidget(ResourceConsumptionWidget *value);
     void setResourceConsumptionChartWidget(ResourceConsumptionChartWidget *value);

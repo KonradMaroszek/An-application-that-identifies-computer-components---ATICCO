@@ -9,7 +9,7 @@ class NetworkMainView : protected MainComponentViewTemplate
 
 public:
     explicit NetworkMainView(QWidget *parent = 0);
-    ~NetworkMainView();
+    virtual ~NetworkMainView();
 
     void setResourceConsumptionWidget(ResourceConsumptionWidget *value);
     void setResourceConsumptionChartWidget(ResourceConsumptionChartWidget *value);

@@ -15,7 +15,7 @@ class MainComponentViewTemplate : public QWidget
 
 protected:
     explicit MainComponentViewTemplate(QWidget *parent = 0);
-    ~MainComponentViewTemplate();
+    virtual ~MainComponentViewTemplate();
 
     void setResourceConsumptionWidget(ResourceConsumptionWidget *value);
     void setResourceConsumptionChartWidget(ResourceConsumptionChartWidget *value);

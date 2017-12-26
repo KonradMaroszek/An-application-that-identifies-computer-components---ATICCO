@@ -3,9 +3,9 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    AticcoMainWIndow w;
-    w.show();
+    QApplication application(argc, argv);
+    AticcoMainWIndow mainWindow;
+    mainWindow.show();
 
-    return a.exec();
+    return application.exec();
 }

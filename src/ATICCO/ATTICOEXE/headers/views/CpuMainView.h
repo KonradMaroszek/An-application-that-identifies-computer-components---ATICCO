@@ -9,7 +9,7 @@ class CpuMainView : protected MainComponentViewTemplate
 
 public:
     explicit CpuMainView(QWidget *parent = 0);
-    ~CpuMainView();
+    virtual ~CpuMainView();
 
     void setResourceConsumptionWidget(ResourceConsumptionWidget *value);
     void setResourceConsumptionChartWidget(ResourceConsumptionChartWidget *value);

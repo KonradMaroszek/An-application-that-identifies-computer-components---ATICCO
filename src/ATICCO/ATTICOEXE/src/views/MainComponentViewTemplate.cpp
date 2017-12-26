@@ -1,4 +1,4 @@
-#include <views/MainComponentViewTemplate.h>
+#include "views/MainComponentViewTemplate.h"
 #include "ui_MainComponentViewTemplate.h"
 
 #include "views/ResourceConsumptionChartWidget.h"

@@ -40,7 +40,9 @@ SOURCES += \
     src/views/CpuMainView.cpp \
     src/views/RamMainView.cpp \
     src/views/DiskMainView.cpp \
-    src/views/NetworkMainView.cpp
+    src/views/NetworkMainView.cpp \
+    src/AxisSettings.cpp \
+    src/Range.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -52,7 +54,9 @@ HEADERS += \
     headers/views/CpuMainView.h \
     headers/views/DiskMainView.h \
     headers/views/NetworkMainView.h \
-    headers/views/RamMainView.h
+    headers/views/RamMainView.h \
+    headers/AxisSettings.h \
+    headers/Range.h
 
 FORMS += \
     uiFiles\mainwindow.ui \

@@ -9,7 +9,7 @@ class RamMainView : protected MainComponentViewTemplate
 
 public:
     explicit RamMainView(QWidget *parent = 0);
-    ~RamMainView();
+    virtual ~RamMainView();
 
     void setResourceConsumptionWidget(ResourceConsumptionWidget *value);
     void setResourceConsumptionChartWidget(ResourceConsumptionChartWidget *value);
