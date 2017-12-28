@@ -17,8 +17,8 @@
 
 struct USBInformation
 {
-    QMap<int,QString> m_deviceInfoMap;
-    QList<QSharedPointer<USBInformation>> m_children;
+    QMap<int,QString> deviceInfoMap;
+    QList<QSharedPointer<USBInformation>> children;
 };
 
 class USBInfo
@@ -29,21 +29,21 @@ public:
     virtual QList<QSharedPointer<USBInformation>> getUSBInfo();
 
 private:
-    void getInfoFromDeviceInstance(QSharedPointer<USBInformation> v_deviceInformation);
-    void getDeviceChild(DEVINST v_deviceInstance, QSharedPointer<USBInformation> v_deviceInformation ,int childNumber, QSharedPointer<USBInformation> v_parentInformation);
-    void getDeviceSibiling(DEVINST v_deviceInstance, QSharedPointer<USBInformation> v_deviceInformation , int childNumber, QSharedPointer<USBInformation> v_parentInformation);
+    void getInfoFromDeviceInstance(QSharedPointer<USBInformation> deviceInformation);
+    void getDeviceChild(DEVINST deviceInstance, QSharedPointer<USBInformation> deviceInformation , int childNumber, QSharedPointer<USBInformation> parentInformation);
+    void getDeviceSibiling(DEVINST deviceInstance, QSharedPointer<USBInformation> deviceInformation , int childNumber, QSharedPointer<USBInformation> parentInformation);
 
 private:
-    QMap<int,int> m_options;
-    QList<QSharedPointer<USBInformation>> m_devices;
-    HDEVINFO m_deviceInfoSet;
-    SP_DEVINFO_DATA m_deviceInfoData;
-    ULONG m_bufferSize;
-    QSharedPointer<wchar_t>* m_buffer;
-    std::wstring m_operationResultWSTR;
-    QString m_operationResultQString;
-    QList<DEVINST> m_deviceInstanceList;
-    QMap<DEVINST, DWORD> m_instanceMap;
+    QMap<int,int> options;
+    QList<QSharedPointer<USBInformation>> devices;
+    HDEVINFO deviceInfoSet;
+    SP_DEVINFO_DATA deviceInfoData;
+    ULONG bufferSize;
+    QSharedPointer<wchar_t>* buffer;
+    std::wstring operationResultWSTR;
+    QString operationResultQString;
+    QList<DEVINST> deviceInstanceList;
+    QMap<DEVINST, DWORD> instanceMap;
 };
 
 #endif // USBINFO_H

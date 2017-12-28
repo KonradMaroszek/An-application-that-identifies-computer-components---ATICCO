@@ -3,11 +3,11 @@
 
 USBInfo::USBInfo()
 {
-    m_options.insert(USB_CLASS, SPDRP_CLASS );
-    m_options.insert(USB_DEVICEDESC, SPDRP_DEVICEDESC);
-    m_options.insert(USB_ENUMERATOR_NAME, SPDRP_ENUMERATOR_NAME );
-    m_options.insert(USB_PHYSICAL_DEVICE_OBJECT_NAME, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME );
-    m_options.insert(USB_HARDWAREID, SPDRP_HARDWAREID );
+    options.insert(USB_CLASS, SPDRP_CLASS );
+    options.insert(USB_DEVICEDESC, SPDRP_DEVICEDESC);
+    options.insert(USB_ENUMERATOR_NAME, SPDRP_ENUMERATOR_NAME );
+    options.insert(USB_PHYSICAL_DEVICE_OBJECT_NAME, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME );
+    options.insert(USB_HARDWAREID, SPDRP_HARDWAREID );
 }
 
 USBInfo::~USBInfo()
@@ -16,43 +16,43 @@ USBInfo::~USBInfo()
 }
 
 
-void USBInfo::getInfoFromDeviceInstance(QSharedPointer<USBInformation> v_deviceInformation)
+void USBInfo::getInfoFromDeviceInstance(QSharedPointer<USBInformation> deviceInformation)
 {
-    foreach (int option ,m_options.values())
+    foreach (int option ,options.values())
     {
-        SetupDiGetDeviceRegistryPropertyW(m_deviceInfoSet,&m_deviceInfoData, option ,NULL,NULL,0, &m_bufferSize);
+        SetupDiGetDeviceRegistryPropertyW(deviceInfoSet,&deviceInfoData, option ,NULL,NULL,0, &bufferSize);
 
-        m_buffer = new QSharedPointer<wchar_t>(new wchar_t[m_bufferSize*sizeof(wchar_t)]) ;
+        buffer = new QSharedPointer<wchar_t>(new wchar_t[bufferSize*sizeof(wchar_t)]) ;
 
-        if(SetupDiGetDeviceRegistryPropertyW(m_deviceInfoSet,&m_deviceInfoData, option , NULL ,(PBYTE)(m_buffer->data()) ,m_bufferSize, &m_bufferSize))
+        if(SetupDiGetDeviceRegistryPropertyW(deviceInfoSet,&deviceInfoData, option , NULL ,(PBYTE)(buffer->data()) ,bufferSize, &bufferSize))
         {
-            m_operationResultWSTR = m_buffer->data();
-            m_operationResultQString = QString::fromStdWString(m_operationResultWSTR);
-            v_deviceInformation.data()->m_deviceInfoMap.insert(m_options.key(option), m_operationResultQString);
+            operationResultWSTR = buffer->data();
+            operationResultQString = QString::fromStdWString(operationResultWSTR);
+            deviceInformation.data()->deviceInfoMap.insert(options.key(option), operationResultQString);
         }
     }
 }
 
-void USBInfo::getDeviceChild(DEVINST v_deviceInstance, QSharedPointer<USBInformation> v_deviceInformation , int childNumber, QSharedPointer<USBInformation> v_parentInformation)
+void USBInfo::getDeviceChild(DEVINST deviceInstance, QSharedPointer<USBInformation> deviceInformation , int childNumber, QSharedPointer<USBInformation> parentInformation)
 {
     DEVINST child;
-    SetupDiEnumDeviceInfo(m_deviceInfoSet, 0 , &m_deviceInfoData);
+    SetupDiEnumDeviceInfo(deviceInfoSet, 0 , &deviceInfoData);
 
-    QSharedPointer<USBInformation> deviceInformation;
+    QSharedPointer<USBInformation> usbDeviceInformation;
 
-    if (CM_Get_Child(&child,v_deviceInstance,0) == CR_SUCCESS)
+    if (CM_Get_Child(&child,deviceInstance,0) == CR_SUCCESS)
     {
-         deviceInformation = QSharedPointer<USBInformation>(new USBInformation());
-         v_deviceInformation.data()->m_children.append(deviceInformation);
-         SetupDiEnumDeviceInfo(m_deviceInfoSet, m_instanceMap.value(child), &m_deviceInfoData);
-         getInfoFromDeviceInstance(deviceInformation);
+         usbDeviceInformation = QSharedPointer<USBInformation>(new USBInformation());
+         deviceInformation.data()->children.append(usbDeviceInformation);
+         SetupDiEnumDeviceInfo(deviceInfoSet, instanceMap.value(child), &deviceInfoData);
+         getInfoFromDeviceInstance(usbDeviceInformation);
 
-         getDeviceChild(child , deviceInformation, child , v_deviceInformation);
+         getDeviceChild(child , usbDeviceInformation, child , deviceInformation);
     }
 
     if (!(childNumber == -1))
     {
-        getDeviceSibiling(childNumber,deviceInformation, childNumber, v_parentInformation);
+        getDeviceSibiling(childNumber,usbDeviceInformation, childNumber, parentInformation);
     }
 }
 
@@ -61,15 +61,15 @@ void USBInfo::getDeviceSibiling(DEVINST v_deviceInstance, QSharedPointer<USBInfo
     Q_UNUSED(childNumber);
 
     DEVINST sibiling;
-    SetupDiEnumDeviceInfo(m_deviceInfoSet, 0 , &m_deviceInfoData);
+    SetupDiEnumDeviceInfo(deviceInfoSet, 0 , &deviceInfoData);
 
     QSharedPointer<USBInformation> deviceInformation;
 
     if (CM_Get_Sibling(&sibiling,v_deviceInstance,0) == CR_SUCCESS)
     {
         deviceInformation = QSharedPointer<USBInformation>(new USBInformation());
-        v_parentInformation.data()->m_children.append(deviceInformation);
-        SetupDiEnumDeviceInfo(m_deviceInfoSet, m_instanceMap.value(sibiling), &m_deviceInfoData);
+        v_parentInformation.data()->children.append(deviceInformation);
+        SetupDiEnumDeviceInfo(deviceInfoSet, instanceMap.value(sibiling), &deviceInfoData);
         getInfoFromDeviceInstance(deviceInformation);
 
         getDeviceChild(sibiling , deviceInformation, sibiling , v_parentInformation);
@@ -78,10 +78,10 @@ void USBInfo::getDeviceSibiling(DEVINST v_deviceInstance, QSharedPointer<USBInfo
 
 QList<QSharedPointer<USBInformation>> USBInfo::getUSBInfo()
 {
-    m_deviceInfoSet = SetupDiCreateDeviceInfoList(NULL, NULL);
-    SetupDiGetClassDevsExW(NULL, NULL , NULL, DIGCF_PRESENT | DIGCF_ALLCLASSES, m_deviceInfoSet, NULL , NULL);
+    deviceInfoSet = SetupDiCreateDeviceInfoList(NULL, NULL);
+    SetupDiGetClassDevsExW(NULL, NULL , NULL, DIGCF_PRESENT | DIGCF_ALLCLASSES, deviceInfoSet, NULL , NULL);
 
-    if(m_deviceInfoSet == INVALID_HANDLE_VALUE)
+    if(deviceInfoSet == INVALID_HANDLE_VALUE)
     {
         return QList<QSharedPointer<USBInformation>>();
     }
@@ -90,28 +90,28 @@ QList<QSharedPointer<USBInformation>> USBInfo::getUSBInfo()
 
     while (true)
     {
-        m_deviceInfoData.cbSize = sizeof(m_deviceInfoData);
+        deviceInfoData.cbSize = sizeof(deviceInfoData);
 
-        if (!SetupDiEnumDeviceInfo(m_deviceInfoSet,deviceInfoSetMemberIndex, &m_deviceInfoData))
+        if (!SetupDiEnumDeviceInfo(deviceInfoSet,deviceInfoSetMemberIndex, &deviceInfoData))
         {
             break;
         }
 
-        m_instanceMap.insert(m_deviceInfoData.DevInst,deviceInfoSetMemberIndex);
+        instanceMap.insert(deviceInfoData.DevInst,deviceInfoSetMemberIndex);
 
-        SetupDiGetDeviceRegistryPropertyW(m_deviceInfoSet,&m_deviceInfoData, SPDRP_ENUMERATOR_NAME,NULL,NULL,0, &m_bufferSize);
-        m_buffer = new QSharedPointer<wchar_t>(new wchar_t[m_bufferSize*sizeof(wchar_t)]) ;
+        SetupDiGetDeviceRegistryPropertyW(deviceInfoSet,&deviceInfoData, SPDRP_ENUMERATOR_NAME,NULL,NULL,0, &bufferSize);
+        buffer = new QSharedPointer<wchar_t>(new wchar_t[bufferSize*sizeof(wchar_t)]) ;
 
-        if (!SetupDiGetDeviceRegistryPropertyW(m_deviceInfoSet,&m_deviceInfoData, SPDRP_ENUMERATOR_NAME, NULL ,(PBYTE)(m_buffer->data()) ,m_bufferSize, &m_bufferSize))
+        if (!SetupDiGetDeviceRegistryPropertyW(deviceInfoSet,&deviceInfoData, SPDRP_ENUMERATOR_NAME, NULL ,(PBYTE)(buffer->data()) ,bufferSize, &bufferSize))
         {
             deviceInfoSetMemberIndex++;
             continue;
         }
 
-        m_operationResultWSTR = m_buffer->data();
-        m_operationResultQString = QString::fromStdWString(m_operationResultWSTR);
+        operationResultWSTR = buffer->data();
+        operationResultQString = QString::fromStdWString(operationResultWSTR);
 
-        if (m_operationResultQString == "PCI")
+        if (operationResultQString == "PCI")
         {
 
         }else
@@ -120,39 +120,39 @@ QList<QSharedPointer<USBInformation>> USBInfo::getUSBInfo()
             continue;
         }
 
-        SetupDiGetDeviceRegistryPropertyW(m_deviceInfoSet,&m_deviceInfoData, SPDRP_CLASS,NULL,NULL,0, &m_bufferSize);
-        m_buffer = new QSharedPointer<wchar_t>(new wchar_t[m_bufferSize*sizeof(wchar_t)]) ;
+        SetupDiGetDeviceRegistryPropertyW(deviceInfoSet,&deviceInfoData, SPDRP_CLASS,NULL,NULL,0, &bufferSize);
+        buffer = new QSharedPointer<wchar_t>(new wchar_t[bufferSize*sizeof(wchar_t)]) ;
 
-        if (!SetupDiGetDeviceRegistryPropertyW(m_deviceInfoSet,&m_deviceInfoData, SPDRP_CLASS, NULL ,(PBYTE)(m_buffer->data()) ,m_bufferSize, &m_bufferSize))
+        if (!SetupDiGetDeviceRegistryPropertyW(deviceInfoSet,&deviceInfoData, SPDRP_CLASS, NULL ,(PBYTE)(buffer->data()) ,bufferSize, &bufferSize))
         {
             deviceInfoSetMemberIndex++;
             continue;
         }
 
-        m_operationResultWSTR = m_buffer->data();
-        m_operationResultQString = QString::fromStdWString(m_operationResultWSTR);
+        operationResultWSTR = buffer->data();
+        operationResultQString = QString::fromStdWString(operationResultWSTR);
 
-        if (m_operationResultQString == "USB")
+        if (operationResultQString == "USB")
         {
-             m_deviceInstanceList.append(m_deviceInfoData.DevInst);
+             deviceInstanceList.append(deviceInfoData.DevInst);
         }
 
         deviceInfoSetMemberIndex++;
     }
 
-    foreach (DEVINST deviceInstance, m_deviceInstanceList)
+    foreach (DEVINST deviceInstance, deviceInstanceList)
     {
         QSharedPointer<USBInformation> deviceInformation = QSharedPointer<USBInformation>(new USBInformation());
-        m_devices.append(deviceInformation);
+        devices.append(deviceInformation);
 
-        SetupDiEnumDeviceInfo(m_deviceInfoSet, 0 , &m_deviceInfoData);
-        SetupDiEnumDeviceInfo(m_deviceInfoSet, m_instanceMap.value(deviceInstance) , &m_deviceInfoData);
+        SetupDiEnumDeviceInfo(deviceInfoSet, 0 , &deviceInfoData);
+        SetupDiEnumDeviceInfo(deviceInfoSet, instanceMap.value(deviceInstance) , &deviceInfoData);
 
         getInfoFromDeviceInstance(deviceInformation);
         getDeviceChild(deviceInstance, deviceInformation, -1, deviceInformation);
     }
 
 
-    SetupDiDestroyDeviceInfoList(m_deviceInfoSet);
-    return m_devices;
+    SetupDiDestroyDeviceInfoList(deviceInfoSet);
+    return devices;
 }

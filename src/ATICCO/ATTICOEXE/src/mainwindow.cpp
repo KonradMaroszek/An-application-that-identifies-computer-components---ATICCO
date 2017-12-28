@@ -145,13 +145,16 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionController* resourceConsumptionNetworkController = new ResourceConsumptionController(networkWidgets);
     connect(resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
+
+    connect(ui->refreshUsbViewButton, SIGNAL(clicked(bool)), this, SLOT(changeUsbWidget()));
+
     USBInfo asd;
     QList<QSharedPointer<USBInformation>> usbInformations = asd.getUSBInfo();
 
     UsbWidgetCreator usbWidgetCreator;
     usbWidgetCreator.setData(usbInformations);
 
-    QWidget* usbWidget = usbWidgetCreator.createWidget();
+    usbWidget = usbWidgetCreator.createWidget();
 
     ui->usbMainVerticalLayout->addWidget(usbWidget);
 }
@@ -159,4 +162,20 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
 AticcoMainWIndow::~AticcoMainWIndow()
 {
     delete ui;
+}
+
+void AticcoMainWIndow::changeUsbWidget()
+{
+    USBInfo asd;
+    QList<QSharedPointer<USBInformation>> usbInformations = asd.getUSBInfo();
+
+    UsbWidgetCreator usbWidgetCreator;
+    usbWidgetCreator.setData(usbInformations);
+
+    QWidget* newUsbWidget = usbWidgetCreator.createWidget();
+
+    ui->usbMainVerticalLayout->replaceWidget(usbWidget, newUsbWidget);
+    usbWidget->deleteLater();
+
+    usbWidget = newUsbWidget;
 }

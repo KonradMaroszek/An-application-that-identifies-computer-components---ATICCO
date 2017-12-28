@@ -15,8 +15,13 @@ public:
     explicit AticcoMainWIndow(QWidget *parent = 0);
     ~AticcoMainWIndow();
 
+private slots:
+    void changeUsbWidget();
+
 private:
     Ui::AticcoMainWIndow *ui;
+
+    QWidget* usbWidget;
 };
 
 #endif // MAINWINDOW_H
