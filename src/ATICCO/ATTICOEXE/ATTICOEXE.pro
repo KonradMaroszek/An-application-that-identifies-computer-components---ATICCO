@@ -42,7 +42,9 @@ SOURCES += \
     src/views/DiskMainView.cpp \
     src/views/NetworkMainView.cpp \
     src/AxisSettings.cpp \
-    src/Range.cpp
+    src/Range.cpp \
+    src/UsbInfo.cpp \
+    src/views/widgetCreators/UsbWidgetCreator.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -56,7 +58,10 @@ HEADERS += \
     headers/views/NetworkMainView.h \
     headers/views/RamMainView.h \
     headers/AxisSettings.h \
-    headers/Range.h
+    headers/Range.h \
+    headers/UsbInfo.h \
+    headers/views/widgetCreators/WidgetCreator.h \
+    headers/views/widgetCreators/UsbWidgetCreator.h
 
 FORMS += \
     uiFiles\mainwindow.ui \
@@ -66,3 +71,5 @@ FORMS += \
 
 RESOURCES += \
     resources/resources.qrc
+
+LIBS += -lSetupapi

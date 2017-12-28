@@ -9,6 +9,10 @@
 
 #include "controllers/ResourceConsumptionController.h"
 
+#include "UsbInfo.h"
+
+#include "views/widgetCreators/UsbWidgetCreator.h"
+
 #include <QThread>
 
 AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
@@ -140,6 +144,16 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
 
     ResourceConsumptionController* resourceConsumptionNetworkController = new ResourceConsumptionController(networkWidgets);
     connect(resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+
+    USBInfo asd;
+    QList<QSharedPointer<USBInformation>> usbInformations = asd.getUSBInfo();
+
+    UsbWidgetCreator usbWidgetCreator;
+    usbWidgetCreator.setData(usbInformations);
+
+    QWidget* usbWidget = usbWidgetCreator.createWidget();
+
+    ui->usbMainVerticalLayout->addWidget(usbWidget);
 }
 
 AticcoMainWIndow::~AticcoMainWIndow()
