@@ -2,11 +2,8 @@
 #define RESOURCECONSUMPTIONCONTROLLER_H
 
 #include <QObject>
+#include <QMap>
 #include "views/ResourceConsumptionWidget.h"
-
-namespace Ui {
-class ResourceConsumptionController;
-}
 
 class ResourceConsumptionController : public QObject
 {
@@ -14,9 +11,13 @@ class ResourceConsumptionController : public QObject
 
 public:
     explicit ResourceConsumptionController(QList<ResourceConsumptionWidget *> resourceConsumptionWidgets);
-    ~ResourceConsumptionController();
+    virtual ~ResourceConsumptionController();
 
 public slots:
+    void deleteThread(int objectId);
+
+protected slots:
+    void setCurrentConsumption(int resourceConsumption);
 
 private slots:
     void resetRestartClock();
@@ -33,6 +34,10 @@ signals:
     void avarageResourceConsumptionChanged(int);
     void avarageResourceConsumptionSinceRestartChanged(int);
 
+protected:
+    QTimer timer;
+    QMap<int, QThread*> threadMap;
+
 private:
     QList<ResourceConsumptionWidget*> resourceConsumptionWidgets;
 
@@ -45,7 +50,6 @@ private:
     int resourceConsumption;
     int resourceConsumptionSinceRestart;
 
-    QTimer timer;
     QTime timeSinceStart;
     QTime timeSinceRestart;
 };

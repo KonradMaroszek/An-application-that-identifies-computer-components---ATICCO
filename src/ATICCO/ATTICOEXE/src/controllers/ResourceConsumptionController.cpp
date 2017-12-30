@@ -1,5 +1,7 @@
 #include "controllers/ResourceConsumptionController.h"
 
+#include <QThread>
+
 ResourceConsumptionController::ResourceConsumptionController(QList<ResourceConsumptionWidget *> resourceConsumptionWidgets)
     : resourceConsumptionWidgets(resourceConsumptionWidgets),
       currentResourceConsumption(0),
@@ -39,6 +41,11 @@ ResourceConsumptionController::~ResourceConsumptionController()
 
 }
 
+void ResourceConsumptionController::setCurrentConsumption(int resourceConsumption)
+{
+    currentResourceConsumption = resourceConsumption;
+}
+
 void ResourceConsumptionController::resetRestartClock()
 {
     ticksSinceRestart = 0;
@@ -58,7 +65,6 @@ void ResourceConsumptionController::refreshTime()
 
 void ResourceConsumptionController::refreshCurrentResourceConsumption()
 {
-    currentResourceConsumption = rand() % 101;
     resourceConsumption += currentResourceConsumption;
     resourceConsumptionSinceRestart += currentResourceConsumption;
     emit currentResourceConsumptionChanged(currentResourceConsumption);
@@ -74,4 +80,10 @@ void ResourceConsumptionController::refreshAvarageResourceConsumptionSinceRestar
 {
     averageResourceConsumptionSinceRestart = (resourceConsumptionSinceRestart + currentResourceConsumption) / ticksSinceRestart;
     emit avarageResourceConsumptionSinceRestartChanged(averageResourceConsumptionSinceRestart%101);
+}
+
+void ResourceConsumptionController::deleteThread(int objectId)
+{
+    QThread * resourceCollector = threadMap.take(objectId);
+    resourceCollector->quit();
 }

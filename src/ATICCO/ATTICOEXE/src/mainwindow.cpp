@@ -8,6 +8,7 @@
 #include "views/NetworkMainView.h"
 
 #include "controllers/ResourceConsumptionController.h"
+#include "controllers/ResourceConsumptionCpuController.h"
 
 #include "UsbInfo.h"
 
@@ -131,19 +132,19 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ui->networkMainVerticalLayout->addWidget((QWidget*)network);
     ui->diskMainVerticalLayout->addWidget((QWidget*)disk);
 
-    ResourceConsumptionController* resourceConsumptionCpuController = new ResourceConsumptionController(cpuWidgets);
-    connect(resourceConsumptionCpuController, SIGNAL(currentResourceConsumptionChanged(int)), cpuMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+    ResourceConsumptionCpuController* resourceConsumptionCpuController = new ResourceConsumptionCpuController(cpuWidgets);
+    connect((QObject*)resourceConsumptionCpuController, SIGNAL(currentResourceConsumptionChanged(int)), cpuMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
     ResourceConsumptionController* resourceConsumptionRamController = new ResourceConsumptionController(ramWidgets);
-    connect(resourceConsumptionRamController, SIGNAL(currentResourceConsumptionChanged(int)), ramMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+    connect((QObject*)resourceConsumptionRamController, SIGNAL(currentResourceConsumptionChanged(int)), ramMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
 
     ResourceConsumptionController* resourceConsumptionDiskController = new ResourceConsumptionController(diskWidgets);
-    connect(resourceConsumptionDiskController, SIGNAL(currentResourceConsumptionChanged(int)), diskMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+    connect((QObject*)resourceConsumptionDiskController, SIGNAL(currentResourceConsumptionChanged(int)), diskMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
 
     ResourceConsumptionController* resourceConsumptionNetworkController = new ResourceConsumptionController(networkWidgets);
-    connect(resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+    connect((QObject*)resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
 
     connect(ui->refreshUsbViewButton, SIGNAL(clicked(bool)), this, SLOT(changeUsbWidget()));

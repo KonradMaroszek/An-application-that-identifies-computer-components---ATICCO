@@ -34,7 +34,6 @@ SOURCES += \
     src/mainwindow.cpp \
     src/views/ResourceConsumptionWidget.cpp \
     src/controllers/ResourceConsumptionController.cpp \
-    src/CpuInformationCollector.cpp \
     src/views/MainComponentViewTemplate.cpp \
     src/views/ResourceConsumptionChartWidget.cpp \
     src/views/CpuMainView.cpp \
@@ -44,13 +43,31 @@ SOURCES += \
     src/AxisSettings.cpp \
     src/Range.cpp \
     src/UsbInfo.cpp \
-    src/views/widgetCreators/UsbWidgetCreator.cpp
+    src/views/widgetCreators/UsbWidgetCreator.cpp \
+    src/controllers/ResourceConsumptionCpuController.cpp \
+    src/controllers/ResourceConsumptionController.cpp \
+    src/controllers/ResourceConsumptionCpuController.cpp \
+    src/utils/ProcessUtils.cpp \
+    src/views/widgetCreators/UsbWidgetCreator.cpp \
+    src/views/CpuMainView.cpp \
+    src/views/DiskMainView.cpp \
+    src/views/mainComponentViewTemplate.cpp \
+    src/views/NetworkMainView.cpp \
+    src/views/RamMainView.cpp \
+    src/views/ResourceConsumptionChartWidget.cpp \
+    src/views/ResourceConsumptionWidget.cpp \
+    src/AxisSettings.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/Range.cpp \
+    src/UsbInfo.cpp \
+    src/resourceCollectors/CpuUsageCollector.cpp \
+    src/resourceCollectors/ResourceCollector.cpp
 
 HEADERS += \
     headers/mainwindow.h \
     headers/views/ResourceConsumptionWidget.h \
     headers/controllers/ResourceConsumptionController.h \
-    headers/CpuInformationCollector.h \
     headers/views/MainComponentViewTemplate.h \
     headers/views/ResourceConsumptionChartWidget.h \
     headers/views/CpuMainView.h \
@@ -61,7 +78,27 @@ HEADERS += \
     headers/Range.h \
     headers/UsbInfo.h \
     headers/views/widgetCreators/WidgetCreator.h \
-    headers/views/widgetCreators/UsbWidgetCreator.h
+    headers/views/widgetCreators/UsbWidgetCreator.h \
+    headers/controllers/ResourceConsumptionCpuController.h \
+    headers/utils/ProcessUtils.h \
+    headers/controllers/ResourceConsumptionController.h \
+    headers/controllers/ResourceConsumptionCpuController.h \
+    headers/resourceCollectors/CpuUsageCollector.h \
+    headers/utils/ProcessUtils.h \
+    headers/views/widgetCreators/UsbWidgetCreator.h \
+    headers/views/widgetCreators/WidgetCreator.h \
+    headers/views/CpuMainView.h \
+    headers/views/DiskMainView.h \
+    headers/views/MainComponentViewTemplate.h \
+    headers/views/NetworkMainView.h \
+    headers/views/RamMainView.h \
+    headers/views/ResourceConsumptionChartWidget.h \
+    headers/views/ResourceConsumptionWidget.h \
+    headers/AxisSettings.h \
+    headers/mainwindow.h \
+    headers/Range.h \
+    headers/UsbInfo.h \
+    headers/resourceCollectors/ResourceCollector.h
 
 FORMS += \
     uiFiles\mainwindow.ui \
