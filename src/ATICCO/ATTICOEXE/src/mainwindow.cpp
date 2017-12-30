@@ -13,6 +13,8 @@
 #include "controllers/ResourceConsumptionRamController.h"
 #include "controllers/ResourceConsumptionNetworkController.h"
 
+#include "resourceCollectors/CpuInformationCollector.h"
+
 #include "UsbInfo.h"
 
 #include "views/widgetCreators/UsbWidgetCreator.h"
@@ -64,15 +66,23 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
 
 
     CpuMainView* cpu = new CpuMainView();
-    cpu->setName("Intel(R) Core(TM) i7-3517U CPU @ 1.90GHz");
-    cpu->setMaxClockSpeed("2401");
-    cpu->setCurrentClockSpeed("1900");
-    cpu->setNumberOfCores("4");
-    cpu->setManufactuer("GenuineIntel");
-    cpu->setAddressWidth("64");
-    cpu->setDataWidth("64");
-    cpu->setCurrentVoltage("8");
-    cpu->setId("BFEBFBFF000306A9");
+    CpuInformationCollector* cpuCollector = new CpuInformationCollector();
+
+    connect(cpuCollector, SIGNAL(cpuNameCollected(QString)), (QObject*)cpu, SLOT(setName(QString)));
+    connect(cpuCollector, SIGNAL(cpuAddressWidthCollected(QString)), (QObject*)cpu, SLOT(setAddressWidth(QString)));
+    connect(cpuCollector, SIGNAL(cpuCurrentClockSpeedCollected(QString)), (QObject*)cpu, SLOT(setCurrentClockSpeed(QString)));
+    connect(cpuCollector, SIGNAL(cpuCurrentVoltageCollected(QString)), (QObject*)cpu, SLOT(setCurrentVoltage(QString)));
+    connect(cpuCollector, SIGNAL(cpuDataWidthCollected(QString)), (QObject*)cpu, SLOT(setDataWidth(QString)));
+    connect(cpuCollector, SIGNAL(cpuIdCollected(QString)), (QObject*)cpu, SLOT(setId(QString)));
+    connect(cpuCollector, SIGNAL(cpuManufactuerCollected(QString)), (QObject*)cpu, SLOT(setManufactuer(QString)));
+    connect(cpuCollector, SIGNAL(cpuMaxClockSpeedCollected(QString)), (QObject*)cpu, SLOT(setMaxClockSpeed(QString)));
+    connect(cpuCollector, SIGNAL(cpuNumberOfCoresCollected(QString)), (QObject*)cpu, SLOT(setNumberOfCores(QString)));
+
+    //connect(cpuCollector, SIGNAL(canDeleteMe(int)), this, SLOT(deleteThread(int)));
+    connect(cpuCollector, SIGNAL(finished()), cpuCollector, SLOT(deleteLater()));
+
+    cpuCollector->start();
+
 
     RamMainView* ram = new RamMainView();
     ram->setNumberOfMemoryChips("2");

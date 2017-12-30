@@ -13,6 +13,9 @@ public:
 
     int getId() const;
 
+protected:
+   QString getValueFromCommandForKey(QString key);
+
 private:
     virtual void run() = 0;
 
