@@ -12,12 +12,9 @@ public:
 
 private:
     virtual void run();
-
-        void deleteParameterName();
-
-        QByteArray extractDigit();
-
-        void collectCpuUsageFromDigitArray(QByteArray digitArray);
+    void deleteParameterName();
+    QByteArray extractDigit();
+    void collectCpuUsageFromDigitArray(QByteArray digitArray);
 
 signals:
     void cpuUsageCollected(int);

@@ -9,6 +9,9 @@
 
 #include "controllers/ResourceConsumptionController.h"
 #include "controllers/ResourceConsumptionCpuController.h"
+#include "controllers/ResourceConsumptionDiskController.h"
+#include "controllers/ResourceConsumptionRamController.h"
+#include "controllers/ResourceConsumptionNetworkController.h"
 
 #include "UsbInfo.h"
 
@@ -135,15 +138,15 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionCpuController* resourceConsumptionCpuController = new ResourceConsumptionCpuController(cpuWidgets);
     connect((QObject*)resourceConsumptionCpuController, SIGNAL(currentResourceConsumptionChanged(int)), cpuMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
-    ResourceConsumptionController* resourceConsumptionRamController = new ResourceConsumptionController(ramWidgets);
+    ResourceConsumptionRamController* resourceConsumptionRamController = new ResourceConsumptionRamController(ramWidgets);
     connect((QObject*)resourceConsumptionRamController, SIGNAL(currentResourceConsumptionChanged(int)), ramMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
 
-    ResourceConsumptionController* resourceConsumptionDiskController = new ResourceConsumptionController(diskWidgets);
+    ResourceConsumptionDiskController* resourceConsumptionDiskController = new ResourceConsumptionDiskController(diskWidgets);
     connect((QObject*)resourceConsumptionDiskController, SIGNAL(currentResourceConsumptionChanged(int)), diskMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
 
-    ResourceConsumptionController* resourceConsumptionNetworkController = new ResourceConsumptionController(networkWidgets);
+    ResourceConsumptionNetworkController* resourceConsumptionNetworkController = new ResourceConsumptionNetworkController(networkWidgets);
     connect((QObject*)resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
 
 

@@ -62,7 +62,17 @@ SOURCES += \
     src/Range.cpp \
     src/UsbInfo.cpp \
     src/resourceCollectors/CpuUsageCollector.cpp \
-    src/resourceCollectors/ResourceCollector.cpp
+    src/resourceCollectors/ResourceCollector.cpp \
+    src/resourceCollectors/CpuUsageCollector.cpp \
+    src/resourceCollectors/DiskUsageCollector.cpp \
+    src/resourceCollectors/NetworkUsageCollector.cpp \
+    src/resourceCollectors/RamUsageCollector.cpp \
+    src/resourceCollectors/ResourceCollector.cpp \
+    src/controllers/ResourceConsumptionController.cpp \
+    src/controllers/ResourceConsumptionCpuController.cpp \
+    src/controllers/ResourceConsumptionDiskController.cpp \
+    src/controllers/ResourceConsumptionNetworkController.cpp \
+    src/controllers/ResourceConsumptionRamController.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -98,7 +108,17 @@ HEADERS += \
     headers/mainwindow.h \
     headers/Range.h \
     headers/UsbInfo.h \
-    headers/resourceCollectors/ResourceCollector.h
+    headers/resourceCollectors/ResourceCollector.h \
+    headers/resourceCollectors/CpuUsageCollector.h \
+    headers/resourceCollectors/DiskUsageCollector.h \
+    headers/resourceCollectors/NetworkUsageCollector.h \
+    headers/resourceCollectors/RamUsageCollector.h \
+    headers/resourceCollectors/ResourceCollector.h \
+    headers/controllers/ResourceConsumptionController.h \
+    headers/controllers/ResourceConsumptionCpuController.h \
+    headers/controllers/ResourceConsumptionDiskController.h \
+    headers/controllers/ResourceConsumptionRamController.h \
+    headers/controllers/ResourceConsumptionNetworkController.h
 
 FORMS += \
     uiFiles\mainwindow.ui \
