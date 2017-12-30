@@ -1,6 +1,4 @@
 #include "controllers/ResourceConsumptionCpuController.h"
-
-#include "utils/ResultWatcher.h"
 #include "resourceCollectors/CpuUsageCollector.h"
 
 #include <QFuture>
