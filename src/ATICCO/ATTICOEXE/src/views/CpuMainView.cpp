@@ -35,12 +35,12 @@ void CpuMainView::setName(const QString string)
 
 void CpuMainView::setMaxClockSpeed(const QString string)
 {
-    MainComponentViewTemplate::setFirstLabelRight(string);
+    MainComponentViewTemplate::setSecondLabelRight(string);
 }
 
 void CpuMainView::setCurrentClockSpeed(const QString string)
 {
-    MainComponentViewTemplate::setSecondLabelRight(string);
+    MainComponentViewTemplate::setFirstLabelRight(string);
 }
 
 void CpuMainView::setNumberOfCores(const QString string)
