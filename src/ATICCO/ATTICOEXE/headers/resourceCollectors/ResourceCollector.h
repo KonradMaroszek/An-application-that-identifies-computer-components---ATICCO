@@ -14,7 +14,7 @@ public:
     int getId() const;
 
 protected:
-   QString getValueFromCommandForKey(QString key);
+   QString getValueFromCommandForKey(QString key, QByteArray command = nullptr);
 
 private:
     virtual void run() = 0;

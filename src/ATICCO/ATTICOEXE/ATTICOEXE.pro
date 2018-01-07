@@ -73,7 +73,8 @@ SOURCES += \
     src/controllers/ResourceConsumptionDiskController.cpp \
     src/controllers/ResourceConsumptionNetworkController.cpp \
     src/controllers/ResourceConsumptionRamController.cpp \
-    src/resourceCollectors/CpuInformationCollector.cpp
+    src/resourceCollectors/CpuInformationCollector.cpp \
+    src/resourceCollectors/RamInformationCollector.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -120,7 +121,8 @@ HEADERS += \
     headers/controllers/ResourceConsumptionDiskController.h \
     headers/controllers/ResourceConsumptionRamController.h \
     headers/controllers/ResourceConsumptionNetworkController.h \
-    headers/resourceCollectors/CpuInformationCollector.h
+    headers/resourceCollectors/CpuInformationCollector.h \
+    headers/resourceCollectors/RamInformationCollector.h
 
 FORMS += \
     uiFiles\mainwindow.ui \

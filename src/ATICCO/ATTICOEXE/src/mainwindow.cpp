@@ -14,6 +14,7 @@
 #include "controllers/ResourceConsumptionNetworkController.h"
 
 #include "resourceCollectors/CpuInformationCollector.h"
+#include "resourceCollectors/RamInformationCollector.h"
 
 #include "UsbInfo.h"
 
@@ -84,17 +85,24 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     cpuCollector->start();
 
 
-    RamMainView* ram = new RamMainView();
-    ram->setNumberOfMemoryChips("2");
-    ram->setCapacity("8.0 GB");
-    ram->setSpeed("1600 MHz");
-    ram->setType("DDR3");
-    ram->setDataWidth("64");
-    ram->setTotalWidth("64");
-    ram->setManufactuers("Samsung | Samsung");
-    ram->setPartNumbers("SADKUHA | 8987897-ASD");
-    ram->setSerialNumbers("BFEBFB | FF000306A9");
 
+    RamMainView* ram = new RamMainView();
+    RamInformationCollector* ramCollector = new RamInformationCollector();
+
+    connect(ramCollector, SIGNAL(ramCapacityCollected(QString)), (QObject*)ram, SLOT(setCapacity(QString)));
+    connect(ramCollector, SIGNAL(ramDataWidthCollected(QString)), (QObject*)ram, SLOT(setDataWidth(QString)));
+    connect(ramCollector, SIGNAL(ramManufactuersCollected(QString)), (QObject*)ram, SLOT(setManufactuers(QString)));
+    connect(ramCollector, SIGNAL(ramNumberOfMemoryChipsCollected(QString)), (QObject*)ram, SLOT(setNumberOfMemoryChips(QString)));
+    connect(ramCollector, SIGNAL(ramPartNumbersCollected(QString)), (QObject*)ram, SLOT(setPartNumbers(QString)));
+    connect(ramCollector, SIGNAL(ramSerialNumbersCollected(QString)), (QObject*)ram, SLOT(setSerialNumbers(QString)));
+    connect(ramCollector, SIGNAL(ramSpeedCollected(QString)), (QObject*)ram, SLOT(setSpeed(QString)));
+    connect(ramCollector, SIGNAL(ramTotalWidthCollected(QString)), (QObject*)ram, SLOT(setTotalWidth(QString)));
+    connect(ramCollector, SIGNAL(ramTypeCollected(QString)), (QObject*)ram, SLOT(setType(QString)));
+
+    //connect(ramCollector, SIGNAL(canDeleteMe(int)), this, SLOT(deleteThread(int)));
+    connect(ramCollector, SIGNAL(finished()), ramCollector, SLOT(deleteLater()));
+
+    ramCollector->start();
 
     NetworkMainView* network = new NetworkMainView();
     network->setName("Intel(R) Centrino(R) Wirelesss-N 2230");
