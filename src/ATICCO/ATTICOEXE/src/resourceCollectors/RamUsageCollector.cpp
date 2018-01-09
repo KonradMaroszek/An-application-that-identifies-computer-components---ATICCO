@@ -1,5 +1,5 @@
 #include "resourceCollectors/RamUsageCollector.h"
-
+#include "SystemInfo.h"
 RamUsageCollector::RamUsageCollector() :
     ResourceCollector()
 {
@@ -13,6 +13,6 @@ RamUsageCollector::~RamUsageCollector()
 
 void RamUsageCollector::run()
 {
-    emit ramUsageCollected(id%100);
+    emit ramUsageCollected(SystemInfo::getRAMLoad());
     emit canDeleteMe(id);
 }

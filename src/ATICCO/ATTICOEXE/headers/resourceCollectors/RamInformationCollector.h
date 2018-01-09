@@ -13,6 +13,8 @@ public:
 private:
     virtual void run();
 
+        QList<QByteArray> createChipInformationList();
+
 signals:
     void ramNumberOfMemoryChipsCollected(const QString string);
     void ramCapacityCollected(const QString string);

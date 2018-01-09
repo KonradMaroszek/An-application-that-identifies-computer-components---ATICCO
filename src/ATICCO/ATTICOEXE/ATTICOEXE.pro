@@ -74,7 +74,9 @@ SOURCES += \
     src/controllers/ResourceConsumptionNetworkController.cpp \
     src/controllers/ResourceConsumptionRamController.cpp \
     src/resourceCollectors/CpuInformationCollector.cpp \
-    src/resourceCollectors/RamInformationCollector.cpp
+    src/resourceCollectors/RamInformationCollector.cpp \
+    src/resourceCollectors/DiskInformationCollector.cpp \
+    src/SystemInfo.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -122,7 +124,9 @@ HEADERS += \
     headers/controllers/ResourceConsumptionRamController.h \
     headers/controllers/ResourceConsumptionNetworkController.h \
     headers/resourceCollectors/CpuInformationCollector.h \
-    headers/resourceCollectors/RamInformationCollector.h
+    headers/resourceCollectors/RamInformationCollector.h \
+    headers/resourceCollectors/DiskInformationCollector.h \
+    headers/SystemInfo.h
 
 FORMS += \
     uiFiles\mainwindow.ui \
@@ -133,4 +137,7 @@ FORMS += \
 RESOURCES += \
     resources/resources.qrc
 
-LIBS += -lSetupapi
+LIBS += -lSetupapi -lPdh
+
+
+DISTFILES +=

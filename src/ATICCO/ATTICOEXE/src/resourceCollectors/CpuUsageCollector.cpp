@@ -1,4 +1,5 @@
 #include "resourceCollectors/CpuUsageCollector.h"
+#include "SystemInfo.h"
 
 CpuUsageCollector::CpuUsageCollector() :
     ResourceCollector()
@@ -12,11 +13,7 @@ CpuUsageCollector::~CpuUsageCollector()
 }
 
 void CpuUsageCollector::run()
-{
-    QStringList getCpuUsageCommand;
-    getCpuUsageCommand << "cpu get loadpercentage / format:list";
-    systemCommandResult = processUtils.runSystemCommand("wmic", getCpuUsageCommand, 1000);
-
-    emit cpuUsageCollected(getValueFromCommandForKey("LoadPercentage").toInt());
+{ 
+    emit cpuUsageCollected(SystemInfo::getProcessorLoad());
     emit canDeleteMe(id);
 }

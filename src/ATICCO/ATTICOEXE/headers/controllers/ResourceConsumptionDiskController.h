@@ -10,8 +10,16 @@ public:
     explicit ResourceConsumptionDiskController(QList<ResourceConsumptionWidget *> resourceConsumptionWidgets);
     virtual ~ResourceConsumptionDiskController();
 
+signals:
+    void diskWriteSpeedCollected(QString);
+    void diskReadSpeedCollected(QString);
+
 private slots:
     void refreshDiskResourceUsage();
+
+private:
+    QTimer timerDiskResource;
+
 };
 
 #endif // RESOURCECONSUMPRIONDISK_H

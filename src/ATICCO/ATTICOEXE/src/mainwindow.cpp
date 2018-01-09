@@ -15,6 +15,7 @@
 
 #include "resourceCollectors/CpuInformationCollector.h"
 #include "resourceCollectors/RamInformationCollector.h"
+#include "resourceCollectors/DiskInformationCollector.h"
 
 #include "UsbInfo.h"
 
@@ -55,16 +56,20 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ramWidgets.append(ramConsumptionWidget);
 
     DiskMainView* disk = new DiskMainView();
-    disk->setModel("HTUMSMSM");
-    disk->setSize("123212311");
-    disk->setFreeSpace("7878782");
-    disk->setFreeSpaceInPercentage("6,3%");
-    disk->setFileSystemType("NFTS");
-    disk->setReadSpeed("205 mb/s");
-    disk->setWriteSpeed("203 mb/s");
-    disk->setAverageResponseTime("2300 ms");
-    disk->setId("KSJDHHAMHHJA");
+    DiskInformationCollector* diskCollector = new DiskInformationCollector();
 
+    connect(diskCollector, SIGNAL(diskModeCollected(QString)), (QObject*)disk, SLOT(setModel(QString)));
+    connect(diskCollector, SIGNAL(diskSizeCollected(QString)), (QObject*)disk, SLOT(setSize(QString)));
+    connect(diskCollector, SIGNAL(diskFreeSpaceCollected(QString)), (QObject*)disk, SLOT(setFreeSpace(QString)));
+    connect(diskCollector, SIGNAL(diskFreeSpaceInPercentageCollected(QString)), (QObject*)disk, SLOT(setFreeSpaceInPercentage(QString)));
+    connect(diskCollector, SIGNAL(diskFileSystemCollectedCollected(QString)), (QObject*)disk, SLOT(setFileSystemType(QString)));
+    connect(diskCollector, SIGNAL(diskAvarageResponseTimeCollected(QString)), (QObject*)disk, SLOT(setAverageResponseTime(QString)));
+    connect(diskCollector, SIGNAL(diskIdCollected(QString)), (QObject*)disk, SLOT(setId(QString)));
+
+    //connect(cpuCollector, SIGNAL(canDeleteMe(int)), this, SLOT(deleteThread(int)));
+    connect(diskCollector, SIGNAL(finished()), diskCollector, SLOT(deleteLater()));
+
+    diskCollector->start();
 
     CpuMainView* cpu = new CpuMainView();
     CpuInformationCollector* cpuCollector = new CpuInformationCollector();
@@ -83,7 +88,6 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     connect(cpuCollector, SIGNAL(finished()), cpuCollector, SLOT(deleteLater()));
 
     cpuCollector->start();
-
 
 
     RamMainView* ram = new RamMainView();
@@ -162,7 +166,8 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
 
     ResourceConsumptionDiskController* resourceConsumptionDiskController = new ResourceConsumptionDiskController(diskWidgets);
     connect((QObject*)resourceConsumptionDiskController, SIGNAL(currentResourceConsumptionChanged(int)), diskMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
-
+    connect((QObject*)resourceConsumptionDiskController, SIGNAL(diskReadSpeedCollected(QString)), (QObject*)disk, SLOT(setReadSpeed(QString)));
+    connect((QObject*)resourceConsumptionDiskController, SIGNAL(diskWriteSpeedCollected(QString)), (QObject*)disk, SLOT(setWriteSpeed(QString)));
 
     ResourceConsumptionNetworkController* resourceConsumptionNetworkController = new ResourceConsumptionNetworkController(networkWidgets);
     connect((QObject*)resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));

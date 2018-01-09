@@ -15,6 +15,8 @@ private:
 
 signals:
     void diskUsageCollected(int);
+    void diskWriteBytesCollected(QString);
+    void diskReadBytesCollected(QString);
 };
 
 #endif // DISKUSAGECOLLECTOR_H
