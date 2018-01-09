@@ -13,6 +13,7 @@ public:
 signals:
     void diskWriteSpeedCollected(QString);
     void diskReadSpeedCollected(QString);
+    void diskReadWriteSpeedCollected(QString);
 
 private slots:
     void refreshDiskResourceUsage();

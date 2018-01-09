@@ -19,6 +19,7 @@ void DiskUsageCollector::run()
     int diskUsage = 0;
     QString diskWriteBytes = 0;
     QString diskReadBytes = 0;
+    QString diskReadWriteBytes = 0;
 
     int numberOfSambles = 3;
 
@@ -31,6 +32,7 @@ void DiskUsageCollector::run()
         diskUsage = getValueFromCommandForKey("PercentDiskTime").toInt();
         diskWriteBytes = getValueFromCommandForKey("DiskReadBytesPersec");
         diskReadBytes = getValueFromCommandForKey("DiskWriteBytesPersec");
+        diskReadWriteBytes = getValueFromCommandForKey("DiskBytesPersec");
 
         numberOfSambles--;
     }
@@ -39,6 +41,7 @@ void DiskUsageCollector::run()
     emit diskUsageCollected(diskUsage);
     emit diskWriteBytesCollected(diskWriteBytes + " bytes/s");
     emit diskReadBytesCollected(diskReadBytes + " bytes/s");
+    emit diskReadWriteBytesCollected(diskReadWriteBytes + " bytes/s");
 
     emit canDeleteMe(id);
 }

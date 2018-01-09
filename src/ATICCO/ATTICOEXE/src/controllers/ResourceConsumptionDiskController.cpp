@@ -25,6 +25,7 @@ void ResourceConsumptionDiskController::refreshDiskResourceUsage()
 
     connect(diskCollector, SIGNAL(diskReadBytesCollected(QString)), this, SIGNAL(diskReadSpeedCollected(QString)));
     connect(diskCollector, SIGNAL(diskWriteBytesCollected(QString)), this, SIGNAL(diskWriteSpeedCollected(QString)));
+    connect(diskCollector, SIGNAL(diskReadWriteBytesCollected(QString)), this, SIGNAL(diskReadWriteSpeedCollected(QString)));
 
     diskCollector->start();
 }

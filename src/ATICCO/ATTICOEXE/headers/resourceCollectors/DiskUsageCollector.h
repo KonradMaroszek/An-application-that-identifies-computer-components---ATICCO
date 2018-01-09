@@ -17,6 +17,7 @@ signals:
     void diskUsageCollected(int);
     void diskWriteBytesCollected(QString);
     void diskReadBytesCollected(QString);
+    void diskReadWriteBytesCollected(QString);
 };
 
 #endif // DISKUSAGECOLLECTOR_H

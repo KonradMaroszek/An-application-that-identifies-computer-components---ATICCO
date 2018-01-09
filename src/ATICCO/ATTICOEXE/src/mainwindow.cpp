@@ -63,7 +63,6 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     connect(diskCollector, SIGNAL(diskFreeSpaceCollected(QString)), (QObject*)disk, SLOT(setFreeSpace(QString)));
     connect(diskCollector, SIGNAL(diskFreeSpaceInPercentageCollected(QString)), (QObject*)disk, SLOT(setFreeSpaceInPercentage(QString)));
     connect(diskCollector, SIGNAL(diskFileSystemCollectedCollected(QString)), (QObject*)disk, SLOT(setFileSystemType(QString)));
-    connect(diskCollector, SIGNAL(diskAvarageResponseTimeCollected(QString)), (QObject*)disk, SLOT(setAverageResponseTime(QString)));
     connect(diskCollector, SIGNAL(diskIdCollected(QString)), (QObject*)disk, SLOT(setId(QString)));
 
     //connect(cpuCollector, SIGNAL(canDeleteMe(int)), this, SLOT(deleteThread(int)));
@@ -168,6 +167,7 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     connect((QObject*)resourceConsumptionDiskController, SIGNAL(currentResourceConsumptionChanged(int)), diskMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
     connect((QObject*)resourceConsumptionDiskController, SIGNAL(diskReadSpeedCollected(QString)), (QObject*)disk, SLOT(setReadSpeed(QString)));
     connect((QObject*)resourceConsumptionDiskController, SIGNAL(diskWriteSpeedCollected(QString)), (QObject*)disk, SLOT(setWriteSpeed(QString)));
+    connect((QObject*)resourceConsumptionDiskController, SIGNAL(diskReadWriteSpeedCollected(QString)), (QObject*)disk, SLOT(setReadWriteSpeed(QString)));
 
     ResourceConsumptionNetworkController* resourceConsumptionNetworkController = new ResourceConsumptionNetworkController(networkWidgets);
     connect((QObject*)resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));

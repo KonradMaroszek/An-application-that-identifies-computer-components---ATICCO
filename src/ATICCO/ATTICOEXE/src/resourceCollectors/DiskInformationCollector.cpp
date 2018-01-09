@@ -21,8 +21,6 @@ void DiskInformationCollector::run()
     systemCommandResult = processUtils.runSystemCommand("wmic", getDiskInformationCommand, 15000);
 
     emit diskModeCollected(getValueFromCommandForKey("Model"));
-    emit diskIdCollected(getValueFromCommandForKey("DeviceID"));
-
 
     QStringList getLogicalDiskInformationCommand;
     getLogicalDiskInformationCommand << "logicaldisk list / format:list";
@@ -39,12 +37,10 @@ void DiskInformationCollector::run()
     emit diskSizeCollected(size);
     emit diskFreeSpaceCollected(freeSpace);
     emit diskFileSystemCollectedCollected(getValueFromCommandForKey("FileSystem"));
+    emit diskIdCollected(getValueFromCommandForKey("Name"));
 
     double diskFreeSpace = (freeSpace.toLongLong() / (double)(size.toLongLong())) * 100;
     diskFreeSpace = floor(diskFreeSpace*100)/100;
 
     emit diskFreeSpaceInPercentageCollected(QString::number(diskFreeSpace) + " %");
-
-
-    emit diskAvarageResponseTimeCollected("2300 ms");
 }

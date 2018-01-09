@@ -9,8 +9,8 @@ DiskMainView::DiskMainView(QWidget *parent) : MainComponentViewTemplate(parent)
     MainComponentViewTemplate::setFourthLabelLeft(tr("File system type:"));
     MainComponentViewTemplate::setFifthLabelLeft(tr("Read speed:"));
     MainComponentViewTemplate::setSixthLabelLeft(tr("Write speed:"));
-    MainComponentViewTemplate::setSeventhLabelLeft(tr("Avarage response time:"));
-    MainComponentViewTemplate::setEigthLabelLeft(tr("Id:"));
+    MainComponentViewTemplate::setSeventhLabelLeft(tr("Read/Write speed:"));
+    MainComponentViewTemplate::setEigthLabelLeft(tr("Instance:"));
 }
 
 DiskMainView::~DiskMainView()
@@ -63,7 +63,7 @@ void DiskMainView::setWriteSpeed(const QString string)
     MainComponentViewTemplate::setSixthLabelRight(string);
 }
 
-void DiskMainView::setAverageResponseTime(const QString string)
+void DiskMainView::seReadWriteSpeed(const QString string)
 {
     MainComponentViewTemplate::setSeventhLabelRight(string);
 }

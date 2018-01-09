@@ -19,7 +19,6 @@ signals:
     void diskFreeSpaceCollected(const QString string);
     void diskFreeSpaceInPercentageCollected(const QString string);
     void diskFileSystemCollectedCollected(const QString string);
-    void diskAvarageResponseTimeCollected(const QString string);
     void diskIdCollected(const QString string);
 };
 
