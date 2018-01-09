@@ -22,7 +22,7 @@ public slots:
     void setFileSystemType(const QString string);
     void setReadSpeed(const QString string);
     void setWriteSpeed(const QString string);
-    void seReadWriteSpeed(const QString string);
+    void setReadWriteSpeed(const QString string);
     void setId(const QString string);
 };
 

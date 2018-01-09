@@ -63,7 +63,7 @@ void DiskMainView::setWriteSpeed(const QString string)
     MainComponentViewTemplate::setSixthLabelRight(string);
 }
 
-void DiskMainView::seReadWriteSpeed(const QString string)
+void DiskMainView::setReadWriteSpeed(const QString string)
 {
     MainComponentViewTemplate::setSeventhLabelRight(string);
 }
