@@ -25,6 +25,7 @@ public slots:
     void setAvarageResourceConsumptionSinceRestart(const int value);
     void setTimeSinceRestart(const int milisecondsSinceRestart);
     void setTimeSinceStart(const int milisecondsSinceStart);
+    void hideCommandLinkButton();
 
 private slots:
     void resetButtonClicked();

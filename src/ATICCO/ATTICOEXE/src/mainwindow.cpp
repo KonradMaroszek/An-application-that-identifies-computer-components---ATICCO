@@ -125,6 +125,7 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionWidget* cpuMainConsumptionWidget = new ResourceConsumptionWidget();
     cpu->setResourceConsumptionWidget(cpuMainConsumptionWidget);
     cpuMainConsumptionWidget->setTitle(QString("CPU"));
+    cpuMainConsumptionWidget->hideCommandLinkButton();
     cpuWidgets.append(cpuMainConsumptionWidget);
 
     ResourceConsumptionChartWidget* cpuMainConsumptionChartWidget = new ResourceConsumptionChartWidget();
@@ -133,6 +134,7 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionWidget* diskMainConsumptionWidget = new ResourceConsumptionWidget();
     disk->setResourceConsumptionWidget(diskMainConsumptionWidget);
     diskMainConsumptionWidget->setTitle(QString("Disk"));
+    diskMainConsumptionWidget->hideCommandLinkButton();
     diskWidgets.append(diskMainConsumptionWidget);
 
     ResourceConsumptionChartWidget* diskMainConsumptionChartWidget = new ResourceConsumptionChartWidget();
@@ -141,6 +143,7 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionWidget* ramMainConsumptionWidget = new ResourceConsumptionWidget();
     ram->setResourceConsumptionWidget(ramMainConsumptionWidget);
     ramMainConsumptionWidget->setTitle(QString("RAM"));
+    ramMainConsumptionWidget->hideCommandLinkButton();
     ramWidgets.append(ramMainConsumptionWidget);
 
     ResourceConsumptionChartWidget* ramMainConsumptionChartWidget = new ResourceConsumptionChartWidget();
@@ -149,7 +152,9 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ResourceConsumptionWidget* networkMainConsumptionWidget = new ResourceConsumptionWidget();
     network->setResourceConsumptionWidget(networkMainConsumptionWidget);
     networkMainConsumptionWidget->setTitle(QString("Network"));
+    networkMainConsumptionWidget->hideCommandLinkButton();
     networkWidgets.append(networkMainConsumptionWidget);
+
 
     ResourceConsumptionChartWidget* networkMainConsumptionChartWidget = new ResourceConsumptionChartWidget();
     network->setResourceConsumptionChartWidget(networkMainConsumptionChartWidget);

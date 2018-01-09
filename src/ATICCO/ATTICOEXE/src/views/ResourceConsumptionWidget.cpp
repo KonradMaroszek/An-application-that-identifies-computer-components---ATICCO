@@ -49,6 +49,11 @@ void ResourceConsumptionWidget::setTimeSinceStart(const int milisecondsSinceStar
     ui->timeOfMeasurmentLabel->setText(timeToDisplay.toString());
 }
 
+void ResourceConsumptionWidget::hideCommandLinkButton()
+{
+    ui->commandLinkButton->hide();
+}
+
 void ResourceConsumptionWidget::resetButtonClicked()
 {
     emit resetClicked();
