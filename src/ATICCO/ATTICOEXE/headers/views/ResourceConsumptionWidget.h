@@ -31,7 +31,7 @@ private slots:
 
 signals:
     void resetClicked();
-    void moreDetailsSignal();
+    void moreDetailsClickedSignal();
 
 private:
     Ui::ResourceConsumptionWidget *ui;

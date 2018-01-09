@@ -38,22 +38,26 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     cpuConsumptionWidget->setTitle(QString("CPU"));
     ui->CPUResourceConsumptionWIdget->layout()->addWidget(cpuConsumptionWidget);
     cpuWidgets.append(cpuConsumptionWidget);
+    connect(cpuConsumptionWidget, SIGNAL(moreDetailsClickedSignal()), this, SLOT(setCpuTabActive()));
 
     ResourceConsumptionWidget* networkConsumptionWidget = new ResourceConsumptionWidget();
     networkConsumptionWidget->setTitle(QString("Network"));
     ui->NetworkResourceConsumptionWIdget->layout()->addWidget(networkConsumptionWidget);
     networkWidgets.append(networkConsumptionWidget);
+    connect(networkConsumptionWidget, SIGNAL(moreDetailsClickedSignal()), this, SLOT(setNetworkTabActive()));
 
 
     ResourceConsumptionWidget* diskConsumptionWidget = new ResourceConsumptionWidget();
     diskConsumptionWidget->setTitle(QString("Disk"));
     ui->DiskResourceConsumptionWIdget->layout()->addWidget(diskConsumptionWidget);
     diskWidgets.append(diskConsumptionWidget);
+    connect(diskConsumptionWidget, SIGNAL(moreDetailsClickedSignal()), this, SLOT(setDiskTabActive()));
 
     ResourceConsumptionWidget* ramConsumptionWidget = new ResourceConsumptionWidget();
     ramConsumptionWidget->setTitle(QString("RAM"));
     ui->RAMResourceConsumptionWIdget->layout()->addWidget(ramConsumptionWidget);
     ramWidgets.append(ramConsumptionWidget);
+    connect(ramConsumptionWidget, SIGNAL(moreDetailsClickedSignal()), this, SLOT(setRamTabActive()));
 
     DiskMainView* disk = new DiskMainView();
     DiskInformationCollector* diskCollector = new DiskInformationCollector();
@@ -205,4 +209,24 @@ void AticcoMainWIndow::changeUsbWidget()
     usbWidget->deleteLater();
 
     usbWidget = newUsbWidget;
+}
+
+void AticcoMainWIndow::setCpuTabActive()
+{
+    ui->tabWidget->setCurrentWidget(ui->cpuTab);
+}
+
+void AticcoMainWIndow::setRamTabActive()
+{
+    ui->tabWidget->setCurrentWidget(ui->ramTab);
+}
+
+void AticcoMainWIndow::setDiskTabActive()
+{
+    ui->tabWidget->setCurrentWidget(ui->diskTab);
+}
+
+void AticcoMainWIndow::setNetworkTabActive()
+{
+    ui->tabWidget->setCurrentWidget(ui->networkTab);
 }

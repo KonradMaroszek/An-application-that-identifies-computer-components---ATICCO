@@ -17,6 +17,10 @@ public:
 
 private slots:
     void changeUsbWidget();
+    void setCpuTabActive();
+    void setRamTabActive();
+    void setDiskTabActive();
+    void setNetworkTabActive();
 
 private:
     Ui::AticcoMainWIndow *ui;

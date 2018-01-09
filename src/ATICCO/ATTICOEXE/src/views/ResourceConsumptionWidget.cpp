@@ -8,6 +8,7 @@ ResourceConsumptionWidget::ResourceConsumptionWidget(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->resetButton, SIGNAL(clicked()), this, SLOT(resetButtonClicked()));
+    connect(ui->commandLinkButton, SIGNAL(clicked()), this, SIGNAL(moreDetailsClickedSignal()));
 }
 
 ResourceConsumptionWidget::~ResourceConsumptionWidget()

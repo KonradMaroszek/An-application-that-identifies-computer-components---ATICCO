@@ -42,7 +42,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -73,7 +73,7 @@
         <enum>Qt::ClickFocus</enum>
        </property>
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/components.png</normaloff>:/graphics/png/graphics/png/components.png</iconset>
        </attribute>
        <attribute name="title">
@@ -160,7 +160,7 @@
       </widget>
       <widget class="QWidget" name="hardwareTab">
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/motherboard.png</normaloff>:/graphics/png/graphics/png/motherboard.png</iconset>
        </attribute>
        <attribute name="title">
@@ -174,7 +174,7 @@
       </widget>
       <widget class="QWidget" name="cpuTab">
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/processor.png</normaloff>:/graphics/png/graphics/png/processor.png</iconset>
        </attribute>
        <attribute name="title">
@@ -188,7 +188,7 @@
       </widget>
       <widget class="QWidget" name="ramTab">
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/RAM.png</normaloff>:/graphics/png/graphics/png/RAM.png</iconset>
        </attribute>
        <attribute name="title">
@@ -202,7 +202,7 @@
       </widget>
       <widget class="QWidget" name="diskTab">
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/hardDisk.png</normaloff>:/graphics/png/graphics/png/hardDisk.png</iconset>
        </attribute>
        <attribute name="title">
@@ -216,7 +216,7 @@
       </widget>
       <widget class="QWidget" name="networkTab">
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/network.png</normaloff>:/graphics/png/graphics/png/network.png</iconset>
        </attribute>
        <attribute name="title">
@@ -230,7 +230,7 @@
       </widget>
       <widget class="QWidget" name="usbTab">
        <attribute name="icon">
-        <iconset resource="../resources/resources.qrc">
+        <iconset>
          <normaloff>:/graphics/png/graphics/png/usb.png</normaloff>:/graphics/png/graphics/png/usb.png</iconset>
        </attribute>
        <attribute name="title">
@@ -298,8 +298,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="../resources/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
