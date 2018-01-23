@@ -6,18 +6,19 @@
 
 class ResourceCollector : public QThread
 {
-    Q_OBJECT
+   Q_OBJECT
 public:
-    ResourceCollector();
-    virtual ~ResourceCollector();
+   ResourceCollector();
+   virtual ~ResourceCollector();
 
-    int getId() const;
+public:
+   int getId() const;
 
 protected:
    QString getValueFromCommandForKey(QString key, QByteArray command = nullptr);
 
 private:
-    virtual void run() = 0;
+    virtual void run() override = 0;
 
 signals:
     void canDeleteMe(int);
@@ -26,6 +27,7 @@ protected:
     QByteArray systemCommandResult;
     ProcessUtils processUtils;
     int id;
+
 private:
     static int idCounter;
 };

@@ -15,6 +15,8 @@ private:
 
 signals:
     void networkUsageCollected(int);
+    void networkInBytesCollected(QString);
+    void networkOutBytesCollected(QString);
 };
 
 #endif // NETWORKUSAGECOLLECTOR_H

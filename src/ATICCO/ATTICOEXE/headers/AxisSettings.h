@@ -1,9 +1,9 @@
 #ifndef AXISSETTINGS_H
 #define AXISSETTINGS_H
 
-#include "Range.h"
-
 #include <QString>
+
+#include "Range.h"
 
 class AxisSettings
 {

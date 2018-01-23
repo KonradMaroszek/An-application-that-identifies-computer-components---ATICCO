@@ -16,6 +16,7 @@
 #include "resourceCollectors/CpuInformationCollector.h"
 #include "resourceCollectors/RamInformationCollector.h"
 #include "resourceCollectors/DiskInformationCollector.h"
+#include "resourceCollectors/NetworkInformationCollector.h"
 
 #include "UsbInfo.h"
 
@@ -41,7 +42,7 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     connect(cpuConsumptionWidget, SIGNAL(moreDetailsClickedSignal()), this, SLOT(setCpuTabActive()));
 
     ResourceConsumptionWidget* networkConsumptionWidget = new ResourceConsumptionWidget();
-    networkConsumptionWidget->setTitle(QString("Network"));
+    networkConsumptionWidget->setTitle(QString("Wi-Fi"));
     ui->NetworkResourceConsumptionWIdget->layout()->addWidget(networkConsumptionWidget);
     networkWidgets.append(networkConsumptionWidget);
     connect(networkConsumptionWidget, SIGNAL(moreDetailsClickedSignal()), this, SLOT(setNetworkTabActive()));
@@ -112,15 +113,20 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
     ramCollector->start();
 
     NetworkMainView* network = new NetworkMainView();
-    network->setName("Intel(R) Centrino(R) Wirelesss-N 2230");
-    network->setCardName("Wi-Fi");
-    network->setSSID("FunBox-9C01");
-    network->setDNSname("home");
-    network->setTypeOfConnection("802.11g");
-    network->setIPv4Address("192.168.1.17");
-    network->setIPv6Address("fe80:6dew:sdaw:2222%4");
-    network->setUploadSpeed("20 kb/s");
-    network->setDownloadSpeed("105 kb/s");
+    NetworkInformationCollector* networkCollector = new NetworkInformationCollector();
+
+    connect(networkCollector, SIGNAL(networkNameCollected(QString)), (QObject*)network, SLOT(setName(QString)));
+    connect(networkCollector, SIGNAL(networkCardNameCollected(QString)), (QObject*)network, SLOT(setCardName(QString)));
+    connect(networkCollector, SIGNAL(networkSSIDCollected(QString)), (QObject*)network, SLOT(setSSID(QString)));
+    connect(networkCollector, SIGNAL(networkDNSNameCollected(QString)), (QObject*)network, SLOT(setDNSname(QString)));
+    connect(networkCollector, SIGNAL(networkTypeOfConnectionCollected(QString)), (QObject*)network, SLOT(setTypeOfConnection(QString)));
+    connect(networkCollector, SIGNAL(networkIPv4Collected(QString)), (QObject*)network, SLOT(setIPv4Address(QString)));
+    connect(networkCollector, SIGNAL(networkIPv6Collected(QString)), (QObject*)network, SLOT(setIPv6Address(QString)));
+
+    //connect(ramCollector, SIGNAL(canDeleteMe(int)), this, SLOT(deleteThread(int)));
+    connect(networkCollector, SIGNAL(finished()), networkCollector, SLOT(deleteLater()));
+
+    networkCollector->start();
 
     ResourceConsumptionWidget* cpuMainConsumptionWidget = new ResourceConsumptionWidget();
     cpu->setResourceConsumptionWidget(cpuMainConsumptionWidget);
@@ -151,7 +157,7 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
 
     ResourceConsumptionWidget* networkMainConsumptionWidget = new ResourceConsumptionWidget();
     network->setResourceConsumptionWidget(networkMainConsumptionWidget);
-    networkMainConsumptionWidget->setTitle(QString("Network"));
+    networkMainConsumptionWidget->setTitle(QString("Wi-Fi"));
     networkMainConsumptionWidget->hideCommandLinkButton();
     networkWidgets.append(networkMainConsumptionWidget);
 
@@ -180,6 +186,8 @@ AticcoMainWIndow::AticcoMainWIndow(QWidget *parent) :
 
     ResourceConsumptionNetworkController* resourceConsumptionNetworkController = new ResourceConsumptionNetworkController(networkWidgets);
     connect((QObject*)resourceConsumptionNetworkController, SIGNAL(currentResourceConsumptionChanged(int)), networkMainConsumptionChartWidget, SLOT(newResourceConsumptionValue(int)));
+    connect((QObject*)resourceConsumptionNetworkController, SIGNAL(networkDownloadSpeedCollected(QString)), (QObject*)network, SLOT(setDownloadSpeed(QString)));
+    connect((QObject*)resourceConsumptionNetworkController, SIGNAL(networkUploadSpeedCollected(QString)), (QObject*)network, SLOT(setUploadSpeed(QString)));
 
 
     connect(ui->refreshUsbViewButton, SIGNAL(clicked(bool)), this, SLOT(changeUsbWidget()));
@@ -202,8 +210,8 @@ AticcoMainWIndow::~AticcoMainWIndow()
 
 void AticcoMainWIndow::changeUsbWidget()
 {
-    USBInfo asd;
-    QList<QSharedPointer<USBInformation>> usbInformations = asd.getUSBInfo();
+    USBInfo usbInfo;
+    QList<QSharedPointer<USBInformation>> usbInformations = usbInfo.getUSBInfo();
 
     UsbWidgetCreator usbWidgetCreator;
     usbWidgetCreator.setData(usbInformations);

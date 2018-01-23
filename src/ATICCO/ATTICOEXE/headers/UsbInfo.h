@@ -26,6 +26,8 @@ class USBInfo
 public:
     USBInfo();
     virtual ~USBInfo();
+
+public:
     virtual QList<QSharedPointer<USBInformation>> getUSBInfo();
 
 private:

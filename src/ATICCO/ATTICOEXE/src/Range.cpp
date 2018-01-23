@@ -17,18 +17,16 @@ int Range::getRangeStart() const
     return start;
 }
 
-void Range::setRangeStart(int value)
-{
-    start = value;
-}
-
 int Range::getRangeStop() const
 {
     return stop;
 }
 
-void Range::setRangeStop(int value)
+void Range::reverseRange()
 {
-    stop = value;
+    int stopCopy;
+    stopCopy = stop;
+    stop = start;
+    start = stopCopy;
 }
 

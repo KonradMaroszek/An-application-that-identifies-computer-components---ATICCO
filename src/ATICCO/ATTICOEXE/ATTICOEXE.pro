@@ -76,7 +76,8 @@ SOURCES += \
     src/resourceCollectors/CpuInformationCollector.cpp \
     src/resourceCollectors/RamInformationCollector.cpp \
     src/resourceCollectors/DiskInformationCollector.cpp \
-    src/SystemInfo.cpp
+    src/SystemInfo.cpp \
+    src/resourceCollectors/NetworkInformationCollector.cpp
 
 HEADERS += \
     headers/mainwindow.h \
@@ -126,7 +127,8 @@ HEADERS += \
     headers/resourceCollectors/CpuInformationCollector.h \
     headers/resourceCollectors/RamInformationCollector.h \
     headers/resourceCollectors/DiskInformationCollector.h \
-    headers/SystemInfo.h
+    headers/SystemInfo.h \
+    headers/resourceCollectors/NetworkInformationCollector.h
 
 FORMS += \
     uiFiles\mainwindow.ui \

@@ -5,7 +5,7 @@
 #include <cmath>
 #include <QString>
 
-
+#define UNIT_MULTIPELR 1024
 
 static PDH_HQUERY cpuQuery;
 static PDH_HCOUNTER cpuTotal;
@@ -21,7 +21,7 @@ unsigned long double SystemInfo::getRAMSize(SystemInfo::Unit v_unit)
 
     if (GlobalMemoryStatusEx(&memory_status))
     {
-       result = (double)memory_status.ullTotalPhys / (double)pow(1024, (int) v_unit);
+       result = (double)memory_status.ullTotalPhys / (double)pow(UNIT_MULTIPELR, (int) v_unit);
     } else
     {
        result = NULL;

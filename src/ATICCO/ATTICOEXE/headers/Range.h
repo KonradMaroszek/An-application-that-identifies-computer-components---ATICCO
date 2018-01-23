@@ -9,10 +9,9 @@ public:
 
 public:
     int getRangeStart() const;
-    void setRangeStart(int value);
-
     int getRangeStop() const;
-    void setRangeStop(int value);
+
+    void reverseRange();
 
 private:
     int start;

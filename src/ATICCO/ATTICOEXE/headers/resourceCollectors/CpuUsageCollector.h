@@ -7,8 +7,8 @@ class CpuUsageCollector : public ResourceCollector
 {
     Q_OBJECT
 public:
-        CpuUsageCollector();
-        virtual ~CpuUsageCollector();
+    CpuUsageCollector();
+    virtual ~CpuUsageCollector();
 
 private:
     virtual void run();

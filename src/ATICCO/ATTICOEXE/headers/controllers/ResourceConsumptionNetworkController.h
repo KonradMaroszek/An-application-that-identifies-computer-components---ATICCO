@@ -10,6 +10,10 @@ public:
     explicit ResourceConsumptionNetworkController(QList<ResourceConsumptionWidget *> resourceConsumptionWidgets);
     virtual ~ResourceConsumptionNetworkController();
 
+signals:
+    void networkUploadSpeedCollected(QString);
+    void networkDownloadSpeedCollected(QString);
+
 private slots:
     void refreshNetworkResourceUsage();
 };
